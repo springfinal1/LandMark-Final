@@ -1,0 +1,19 @@
+-- SQL --
+
+--2023-11-10--
+CREATE TABLE user (
+  id varchar(100) NOT NULL,
+  pwd varchar(100) NOT NULL,
+  name varchar(100) NOT NULL,
+  age int NOT NULL,
+  email varchar(300) DEFAULT NULL,
+  address varchar(300) DEFAULT NULL,
+  phone_number varchar(100) DEFAULT NULL,
+  PRIMARY KEY (id)
+)
+
+CREATE TABLE auth_user (
+  id varchar(100) NOT NULL,
+  auth varchar(100) DEFAULT 'ROLE_USER',
+  CONSTRAINT fk_auth_user_id FOREIGN KEY (id) REFERENCES user (id) ON DELETE CASCADE
+)

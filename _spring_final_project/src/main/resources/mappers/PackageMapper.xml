@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.easyfestival.www.repository.PackageDAO">
+  	
+  	<insert id="insertProduct">
+  		insert into hotel(ht_name, ht_price, pk_no)
+  		values(#{htName},#{htPrice}, #{pkNo});
+  		
+  		insert into airplane(ap_price, ap_arrival, ap_departure, pk_no)
+  		values(#{apPrice},#{apArrival},#{apDeparture}, #{pkNo});
+  		
+  		insert into festival(fv_name,fv_price, pk_no)
+  		values(#{fvName},#{fvPrice},#{pkNo});
+  		
+  		insert into place(pl_country,pl_name,pk_no, pl_continent)
+  		values(#{plCountry},#{plName}, #{pkNo}, #{plContinent});
+  	</insert>
+  	
+  	<insert id="register">
+  		insert into package(pk_name, pk_price, pk_content, pk_continent)
+  		values(#{pkName},#{pkPrice},#{pkContent},#{pkContinent})
+  	</insert>
+  	
+  	<select id="getPkno" resultType="long"> 
+  		select max(pk_no) from package
+  	</select>
+  	
+  	<select id="getPackList" resultType="com.easyfestival.www.domain.PackageVO">
+  		select * from package where pk_continent = #{pkContinent}
+  	</select>
+  	<select id="getAirList" resultType="com.easyfestival.www.domain.AirplaneVO">
+  		select * from airplane where pk_no = #{pkNo}
+  	</select>
+  	<select	id="getPlcList" resultType="com.easyfestival.www.domain.PlaceVO">
+  		select * from place where pk_no = #{pkNo}
+  	</select>
+  	<select id="getHotList" resultType="com.easyfestival.www.domain.HotelVO">
+  		select * from hotel where pk_no = #{pkNo}
+  	</select>
+  	<select id="getFesList" resultType="com.easyfestival.www.domain.FestivalVO">
+  		select * from festival where pk_no = #{pkNo}
+  	</select>
+  	
+  	<select id="getDTO" resultMap="packlist">
+  		select 
+  		*
+  		from package p
+		join airplane a using(pk_no)
+		join festival f using(pk_no)
+		join place l using(pk_no)
+		join hotel h using(pk_no)
+		join product_file pf using(pk_no)
+		where pk_continent = #{pkContinent}
+  	</select>
+  	
+  	<select id="getdtoDetail" resultMap="packlist">
+  		select 
+  		*
+  		from package p
+		join airplane a using(pk_no)
+		join festival f using(pk_no)
+		join place l using(pk_no)
+		join hotel h using(pk_no)
+		join product_file pf using(pk_no)
+		where pk_no = #{pkNo}
+  	</select>
+  	
+  	<update id="modify"> 	
+  		update package set pk_name = #{pkName}, pk_content = #{pkContent} ,pk_continent = #{pkContinent},pk_price = #{pkPrice}  where pk_no = #{pkNo};	
+  		update hotel set ht_name = #{htName} , ht_price = #{htPrice} where pk_no = #{pkNo};
+  		update airplane set ap_price = #{apPrice} , ap_arrival = #{apArrival}, ap_departure = #{apDeparture} where pk_no = #{pkNo};
+  		update place set pl_name = #{plName} , pl_country = #{plCountry} , pl_continent = #{plContinent} where pk_no = #{pkNo};
+  		update festival set fv_name = #{fvName} , fv_price = #{fvPrice} where pk_no = #{pkNo};
+  	</update>
+
+	<delete id="removeProduct">
+		delete from package where pk_no = #{pkNo};
+		delete from place where pk_no = #{pkNo};
+		delete from hotel where pk_no = #{pkNo};
+		delete from airplane where pk_no = #{pkNo};
+		delete from festival where pk_no = #{pkNo};
+	</delete>
+	<insert id="addFavorite">
+		insert into favorite(id, pk_no)
+		values(#{idVal},#{pkNo})
+	</insert>
+  	
+  	<select id="getFaList" resultType="com.easyfestival.www.domain.FavoriteVO">
+  		select * from favorite where id = #{id}
+  	</select>
+  	
+  	<delete id="removeFavoriteRemove">
+  		delete from favorite where pk_no = #{pkNo} and id = #{idVal}
+  	</delete>
+  	
+  	<resultMap type="com.easyfestival.www.domain.ProductListDTO" id="packlist">
+  		
+	  		<association property="packvo" javaType="packvo">	
+				<id column="pk_no" property="pkNo"/>
+				<result column="pk_price"  property="pkPrice"/>
+				<result column="pk_name"  property="pkName"/>
+				<result column="pk_content"  property="pkContent"/>
+				<result column="pk_continent"  property="pkContinent"/>
+	  		</association>
+	  		
+	  		<association property="fvo" javaType="fvo">			
+	  			<result column="fv_no" property="fvNo" />
+				<result column="fv_name" property="fvName" />
+				<result column="fv_price" property="fvPrice" />
+	  		</association>
+			
+			<association property="hvo" javaType="hvo">		
+				<result column="ht_no" property="htNo" />
+				<result column="ht_name" property="htName" />
+				<result column="ht_price" property="htPrice" />		
+			</association>
+			
+			<association property="avo" javaType="avo">		
+				<result column="ap_no"  property="apNo"/>
+				<result column="ap_price" property="apPrice"/>
+				<result column="ap_arrival" property="apArrival"/>
+				<result column="ap_departure"  property="apDeparture"/>		
+			</association>
+			
+			<association property="plvo" javaType="plvo">		
+				<result column="pl_no" property="plNo" />
+				<result column="pl_name" property="plName" />
+				<result column="pl_country" property="plCountry"/>
+				<result column="pl_continent" property="plContinent" />
+			</association>
+			
+			<collection property="pfList" javaType="ArrayList" ofType="pfvo">
+				<result column="pf_uuid" property="pfUuid"/>
+				<result column="pf_name" property="pfName"/>
+				<result column="pf_size" property="pfSize"/>
+				<result column="pf_reg_at" property="pfRegAt"/>
+				<result column="pf_save_dir" property="pfSaveDir"/>
+			</collection>
+	
+  	</resultMap>
+  	
+  	
+  	
+
+  	
+	
+  </mapper>

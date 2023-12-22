@@ -1,0 +1,203 @@
+@charset "UTF-8";
+
+@font-face {
+	font-family: 'EASTARJET-Medium';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_231029@1.1/EASTARJET-Medium.woff2')
+		format('woff2');
+	font-weight: 500;
+	font-style: normal;
+}
+input,button,span,p{
+	padding: 0px;
+	margin: 0px;
+}
+
+
+body {
+	position: relative;
+}
+
+.list-head-div{
+	margin: 100px 0px 50px 0px;
+}
+.list-head-div>h2{
+	font-size:30px;
+	text-align: center;
+}
+
+/* search 영역 */
+
+.search-div{
+    display: flex;
+    align-items: center;
+}
+
+.review-search-select {
+	width: 150px;
+	height:44px;
+    border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    padding: 0px 13px;
+    font-size: 14px;
+    margin-right:5px;
+}
+
+.search-input {
+	width: 517px;
+	height: 40px;
+	font-size: 15px;
+    margin-right:5px;
+	
+}
+
+.search-input:hover{
+	border: 1px solid black;
+}
+
+.searchBtn{
+	height: 44px;
+	width: 50px;
+	background-color: black;
+	margin-right:5px;
+}
+
+.material-symbols-outlined{
+	color: white;
+}
+
+/* review 부분 */
+
+.totalcount-div{
+	margin: 40px 0px 40px 0px;
+}
+
+.best-btn{
+	width: 110px;
+	height:40px;
+	float: right;
+	background-color: white;
+	margin-right: 10px;
+
+}
+
+.middle-div, .review-paging-div {
+	width: 50%;
+}
+
+.review-title-div,.review-list-content,.review-list-detail{
+	margin-top: 15px;
+}
+
+.review-list {
+	background-color: #f7f7f7;
+	margin-top: 15px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.review-title-div{
+	padding-left: 20px;
+}
+
+.review-title-a{
+	font-size: 20px;
+	font-weight:800;
+	color:black;
+	
+}
+
+
+.review-list-detail{
+	padding-bottom: 20px;
+}
+
+.review-list-image{
+	margin: 15px 15px 15px 0px;
+}
+.review-list-image img{
+	width: 150px;
+	height: 100%;
+}
+
+
+
+/* paging 컨테이너 부분 */
+
+.review-paging-div {
+	transform: translate(50%, 50%);
+	position: relative;
+}
+.pagingContainer{
+	width:50%;
+	display: flex;
+	gap: 1.8rem;
+	align-items: center;
+	justify-content:center;
+	margin-top:30px;
+	margin-bottom: 50px;
+	position: relative;
+}
+.pagingContainer>a, .pagingContainer span{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 2rem;
+	height: 2rem;
+	text-decoration: none;
+}
+.pagingContainer span{
+	border-radius: 50%;
+	background-color: #F5F5F5;
+	font-weight: 700; 
+	color :#1c1c1c;
+}
+.pagingContainer span:hover{
+	background-color: #A9A9A9;
+}
+
+.pagingContainer i{
+	font-size: 2rem;
+	color: #1c1c1c;
+}
+.paging-div{
+	right:0;
+	position:absolute;
+	width:120px;
+	height:40px;
+	display: flex;
+	flex-direction: row;
+	/* padding: 5px 5px 5px 5px; */
+	border: 1px solid black;
+	align-items: center;
+}
+.paging-div>a{
+	width:100%;
+	color: black;
+	text-decoration: none;
+	text-align: center;
+	font-weight: 700;
+}
+
+#pencil{
+	font-size: 1rem;
+	margin-right: 5px;
+}
+
+
+
+
+#selectNo{
+	/* 선택한 페이지 번호 */
+	background-color: #1c1c1c;
+	color: #fff;
+}
+#enable:hover{
+	/* prev, next 활성화시 */
+	color:#A9A9A9;
+}
+#disable{
+	/* prev, next 비활성화시 */
+	color: #D0D4CA;
+}
+

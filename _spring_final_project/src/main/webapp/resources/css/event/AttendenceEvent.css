@@ -1,0 +1,55 @@
+.attendence-div{
+   position: relative;
+   display: flex;
+   align-items: center;
+   flex-direction: column;
+   position: absolute;   
+   transform: translate(-40%,-50%);
+   top: 40%;
+   left: 50%;
+   
+   position:relative;
+   width:860px;
+   height:1100px;
+   background-image: url("/resources/image/event-image/Attendance_div_background.png");
+}
+
+.attendence-ul{
+   width:80%;
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+   grid-gap: 50px;
+   
+   position: absolute;
+   bottom: 25%;
+   left: :60%;
+}
+
+.attendence-ul li{
+   background-color: white;
+   width: 50px;
+   height:50px;
+}
+
+.attendence-ul > li >img{
+   width: 60px;
+   height: 60px;
+}
+
+.attendanceBtn{
+   position: absolute;
+   bottom: 5%;
+   left: :60%;
+   
+   
+   /* border: 1px solid black;
+   text-align: center;
+   align-content: center; */
+}
+
+.abtn{
+   width: 100px;
+   height: 50px;
+   background-color: black;
+   color: white;
+}

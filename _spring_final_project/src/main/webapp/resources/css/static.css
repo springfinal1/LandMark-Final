@@ -1,0 +1,58 @@
+@charset "UTF-8";
+
+.recommendedTravel-container{
+	margin-top:12rem;
+	margin-bottom:15rem;
+	width:100%;
+	padding: 0 70px 0;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+p{
+	margin: 0;
+	padding: 0;
+}
+.main-title-box{
+	width:100%;
+	border-bottom: 1px solid #1c1c1c;
+	padding-bottom: 2rem;
+}
+.main-title{
+	font-family: 'Gothic A1', sans-serif;
+	font-size: 30px;
+}
+.date{
+	font-size: 15px;
+    letter-spacing: -0.48px;
+	color:#999;
+	margin-top: 5px;
+}
+.sub-title{
+	text-align: center;
+	margin:2rem 0 1.3rem 0;
+}
+.sub-title strong{
+	font-size:1.4rem;
+}
+.sub-title p{
+	color:hsl(210,75%,60%);
+	font-weight: bold;
+	font-size:14px;
+	margin-top: 5px;
+}
+.img>:nth-child(2){
+	text-align: center;
+	font-size: 14px;
+	font-weight: 600;
+}
+.img>:not(:nth-child(2)) {
+    letter-spacing: -0.52px;	
+	font-size: 17px;
+	font-weight: 700;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+.text-color {
+	color: hsl(210,75%,60%);
+}

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.easyfestival.www.repository.EventDAO">
+	<insert id="eventRegister">
+		insert into event (ev_name,ev_start,ev_end,ev_type,ev_content)
+		values (#{evName},#{evStart},#{evEnd},#{evType},#{evContent})
+	</insert>
+	<select id="OneventList" resultType="com.easyfestival.www.domain.eventVO">
+		select * from event 
+		where ev_end > #{now}
+		order by ev_no desc
+	</select>
+	<select id="LasteventList" resultType="com.easyfestival.www.domain.eventVO">
+		select * from event 
+		where #{now} > ev_end
+		order by ev_no desc
+	</select>
+	<select id="detail" resultType="com.easyfestival.www.domain.eventVO">
+		select * from event where ev_no=#{evNo}
+	</select>
+	<delete id="eventRemove">
+		delete from event where ev_no=#{evNo}
+	</delete>
+	<update id="eventModify">
+		update event set ev_name=#{evName},ev_start=#{evStart},ev_end=#{evEnd},ev_type=#{evType},ev_content=#{evContent}
+		where ev_no=#{evNo}
+	</update>
+	<insert id="registerPrize">
+		insert into event_prize values (#{id},#{prize})
+	</insert>
+	<select id="lastEvno" resultType="int">
+		select max(ev_no) from event;
+	</select>
+	<insert id="rouletteRegister">
+		insert into roulette values (#{evNo },#{prizes })
+	</insert>
+	<select id="getPrize" resultType="String">
+		select prizes from roulette where ev_no=#{evNo};
+	</select>
+	<insert id="attendanceRegister">
+		insert into attendance values (#{evNo},#{maxAttendanceCount},#{point},#{specialPointCount},#{specialPoint},#{fullAttendancePrize})
+	</insert>
+	<insert id="attendanceHistory">
+		insert into attendance_history values (#{evNo},#{id},#{now})
+	</insert>
+	<select id="getAttendanceHistory" resultType="com.easyfestival.www.domain.AttendanceHistoryVO">
+		select * from attendance_history where ev_no=#{evNo} and id=#{id} and attendance_date= #{now} 
+	</select>
+	<select id="getAttendance" resultType="com.easyfestival.www.domain.attendanceVO">
+		select * from attendance where ev_no=#{evNo}
+	</select>
+	<update id="addpoint">
+		update membership set point=point+#{point} where id=#{id}
+	</update>
+	<select id="getAttendanceCount" resultType="int">
+		select count(id) from attendance_history where ev_no=#{evNo} and id=#{id}
+	</select>
+	<update id="addSpecialPoint">
+		update membership set point=point+#{specialPoint} where id=#{id}
+	</update>
+</mapper>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.easyfestival.www.repository.UserDAO">
+  
+  	<select id="selectId" resultType="uvo">
+  		select * from user where id = #{id}
+  	</select>
+  	
+  	<select id="selectAuths" resultType="authvo">
+  		select * from auth_user where id = #{id}
+  	</select>
+  	
+  	<insert id="join">
+ 		insert into user(id, pwd, name, age, email, address, phone_number)
+ 		values(#{id}, #{pwd}, #{name}, #{age}, #{email}, #{address}, #{phoneNumber})
+  	</insert>
+  	
+  	<insert id="authUser">
+  		insert into auth_user(id, auth) values(#{id}, #{auth})
+  	</insert>
+  	
+  	<update id="modifyUser">
+  		update user set 
+  		<include refid="modify"></include>
+  		where id = #{id}
+  	</update>
+  	
+  	<delete id="deleteUser">
+  		delete from user where id = #{id}
+  	</delete>
+  	
+  	<select id="getUserCount" resultType="int">
+  		select count(id) from user;
+  	</select>
+  	
+  	<select id="getList" resultType="uvo">
+  		select * from user
+  		limit #{limitStart}, #{listQty}
+  	</select>
+  	
+  	<select id="getUserList" resultType="udto">
+  		select * from user left join membership using(id)
+  		limit #{limitStart}, #{listQty}
+  	</select>
+  	
+  	<select id="getId" resultType="uvo">
+  		select * from user
+  		where name = #{name} and email = #{email}
+  	</select>
+  	
+  	<select id="getFavoriteList" resultType="fadto">
+  		select * from favorite f join package p using(pk_no)
+  		where f.id = #{id}
+  	</select>
+  	
+  	<sql id="modify">
+  		<trim suffixOverrides=",">
+  			<if test="!pwd.equals('')">
+  				pwd = #{pwd},
+  			</if>
+  			<if test="!name.equals('')">
+  				name = #{name},
+  			</if>
+  			<if test="!age.equals('')">
+  				age = #{age},
+  			</if>
+  			<if test="!email.equals('')">
+  				email = #{email},
+  			</if>
+  			<if test="!phoneNumber.equals('')">
+  				phone_number = #{phoneNumber},
+  			</if>
+  			<if test="!address.equals('')">
+  				address = #{address},
+  			</if>
+  		</trim>
+  	</sql>
+  	
+  	
+  </mapper>
+  
+  

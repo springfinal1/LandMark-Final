@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.easyfestival.www.repository.FreetourDAO">
+  	<insert id="insertList">
+  		insert into airport(cityJpn,cityEng,cityKor,cityCode)
+  		values(#{cityJpn},#{cityEng},#{cityKor},#{cityCode})
+  	</insert>
+  	
+  	<select id="getSearch" resultType="com.easyfestival.www.domain.AirplaneDTO">
+  		select * from airport where cityKor like concat('%',#{place},'%')
+  	</select>
+  	
+  	<select id="getDepartureAirport" resultType="String">
+  		select (cityCode) from airport where cityKor like concat('%',#{departureAirport},'%') limit 1
+  	</select>
+  	
+  	<select id="getArrivalAirport" resultType="String">
+  		select (cityCode) from airport where cityKor like concat('%',#{arrivalAirport},'%') limit 1
+  	</select>
+  	
+  	<select id="getPrice" resultType="int">
+  		select (ft_price) from free_ticket where city_name like concat('%',#{arrival},'%') limit 1
+  	</select>
+  </mapper>

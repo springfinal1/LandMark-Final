@@ -1,0 +1,526 @@
+div {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	box-sizing: border-box;
+}
+
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	font-family: Pretendard, "Pretendard_Alt", "Apple SD Gothic Neo",
+		"맑은 고딕", "Malgun Gothic", sans-serif !important;
+		background: url("/resources/image/polynesia-3021072_1920.jpg");
+}
+
+@media screen and (max-width: 767px) {
+	.payment-box-left, .payment-box-right {
+		width: 100%; /* 전체 폭으로 설정 */
+		margin-right: 0;
+		margin-left: 0;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.payment-box-left, .payment-box-right {
+		width: 48%;
+		margin-right: 2%;
+		margin-left: 0;
+	}
+}
+
+.user-nmuber-top {
+	width: 100%;
+}
+
+.form-group-two {
+	width: 100%;
+}
+
+.payment-container-main {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	height: 100%;
+	z-index: -2;
+}
+
+.payment-box-left {
+	box-sizing: border-box;
+	padding: 20px;
+	border-radius: 8px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	width: 47%; /* 수정: 전체 폭으로 설정 */
+	margin-top: 60px;
+	margin-bottom: 20px; /* 수정: 아래 여백 추가 */
+	margin-left: 40px;
+	background-color: #fff; /* 배경색 추가 */
+	z-index: 1;
+	opacity: 0.9;
+}
+
+.payment-box-right {
+	box-sizing: border-box;
+	padding: 20px;
+	border-radius: 8px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	width: 47%; /* 수정: 전체 폭으로 설정 */
+	margin-top: 60px; /* 수정: 위 여백 추가 */
+	margin-bottom: 20px; /* 수정: 아래 여백 추가 */
+	text-align: center;
+	background-color: #fff;
+	z-index: 1;
+	opacity: 0.9;
+}
+
+.product-table {
+	width: 100%; /* 테이블 폭을 100%로 설정하여 부모 요소에 맞게 조절 */
+	border-collapse: collapse; /* 테이블 간격을 없애기 위해 사용 */
+}
+
+h2 {
+	text-align: center;
+}
+
+.tita {
+	font-size: 30px;
+	line-height: 40px;
+	letter-spacing: -1.5px;
+	font-weight: 100;
+	text-decoration: underline;
+	text-decoration-thickness: 1px;
+}
+
+.titb {
+	font-size: 30px;
+	line-height: 40px;
+	font-weight: 100;
+}
+
+span {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	box-sizing: border-box;
+}
+
+label {
+	display: block;
+	margin-bottom: 8px;
+}
+
+input {
+	box-sizing: border-box;
+	padding: 8px 14px 8px 16px;
+	width: 100%;
+	height: 48px;
+	border: none;
+	border: 1px solid rgba(0, 0, 0, .08);
+	border-radius: 4px;
+	font-weight: 400;
+	font-size: 18px;
+	color: rgba(0, 0, 0, .56);
+}
+
+/* button {
+	
+}
+
+button:hover {
+	background-color: #45a049;
+} */
+.user-number {
+	margin: 220 200 100 0;
+	padding: 0 0;
+	width: 100%;
+	display: inline-block;
+}
+
+.user-number-box {
+	width: 100%;
+	text-align: center;
+}
+
+.product-amout {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 20px;
+}
+
+.event-box {
+	margin: 0 0 0 0;
+	padding: 0 0;
+	height: 300px;
+	width: 100%;
+	display: inline-block;
+	padding: 0 0;
+}
+
+.payment-box-light {
+	background-color: #00ef0c;
+	padding: 20px;
+	border-radius: 8px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	width: 35%;
+}
+
+.phon-button {
+	top: 0;
+	right: 0;
+	width: 100px;
+	height: 48px;
+	padding: 13px 0 10px;
+	border: none;
+	border-radius: 4px;
+	background: #ccc;
+	font-size: 15px;
+	color: #fff;
+}
+
+.phon-button {
+	margin-top: 10px;
+	padding: 0;
+	border: 0;
+	box-sizing: border-box;
+}
+
+.user-walk {
+	display: inline-block;
+	width: 86px;
+	height: 32px;
+	border: 1px solid rgb(242, 17, 76);
+	border-radius: 4px;
+	background: #fff;
+	font-size: 14px;
+	color: rgb(230, 28, 81);
+}
+
+.user-car {
+	display: inline-block;
+	width: 86px;
+	height: 32px;
+	border: 1px solid rgb(242, 17, 76);
+	border-radius: 4px;
+	background: #fff;
+	font-size: 14px;
+	color: rgb(230, 28, 81);
+}
+
+.user-walk span {
+	display: inline-block;
+	padding-left: 20px;
+}
+
+.user-car span {
+	display: inline-block;
+	padding-left: 20px;
+}
+
+.form-group-rogin {
+	margin-top: 80px;
+	font-size: 15px;
+	line-height: 22px;
+	text-align: center;
+	background: #00ff80
+		url(//image.goodchoice.kr/images/web_v3/bg_login_m.png);
+	background-size: cover;
+	padding: 22px 0;
+}
+
+form-group-rogin span {
+	display: inline-block;
+	padding-right: 14px;
+	background: url(//image.goodchoice.kr/images/web_v3/ico_arr_gt.png) 100%
+		50% no-repeat;
+	background-size: 12px auto;
+	font-size: 16px;
+	height: 100%;
+}
+
+.cupon-button {
+	padding: 0 14px;
+	height: 40px;
+	line-height: 40px;
+	border: 1px solid rgba(0, 0, 0, .08);
+	border-radius: 4px;
+	background: #fafafa;
+	font-size: 16px;
+	color: rgba(0, 0, 0, .56);
+	cursor: pointer;
+}
+
+.form-group-cupon-mid {
+	width: 100%;
+}
+
+.form-group-cupon-mid::after {
+	clear: both;
+	content: "";
+	display: block;
+}
+
+.cash-box {
+	margin: 0 0 0 0;
+	padding: 0 0;
+	border-bottom: 2px solid rgba(0, 0, 0, 0.08);
+	height: 300px;
+	width: 600px;
+	display: inline-block;
+	padding: 0 0;
+}
+
+.form-select {
+	height: 48px;
+	padding: 0 12px;
+	border: 1px solid rgba(0, 0, 0, .08);
+	border-radius: 4px;
+	background: #fafafa;
+	background-size: 25px auto;
+	font-size: 18px;
+	color: rgba(0, 0, 0, .56);
+	cursor: pointer;
+	background-size: 25px auto;
+	clear: both;
+	content: "";
+	display: block;
+}
+
+.price-box {
+	width: 100%;
+}
+
+.product-eventTap {
+	width: 100%;
+}
+
+.selectBox * {
+	box-sizing: border-box;
+}
+
+.selectBox {
+	position: relative;
+	width: 150px;
+	height: 35px;
+	border-radius: 4px;
+	border: 2px solid lightcoral;
+	background: calc(100% - 7px) center no-repeat;
+	background-size: 20px;
+	cursor: pointer;
+}
+
+.selectBox:after {
+	content: '';
+	display: block;
+	width: 2px;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	right: 35px;
+	background: lightcoral;
+}
+
+.selectBox .label {
+	display: flex;
+	align-items: center;
+	width: inherit;
+	height: inherit;
+	border: 0 none;
+	outline: 0 none;
+	padding-left: 15px;
+	background: transparent;
+	cursor: pointer;
+}
+
+.selectBox .optionList {
+	position: absolute;
+	top: 28px;
+	left: 0;
+	width: 100%;
+	background: lightcoral;
+	color: #fff;
+	list-style-type: none;
+	padding: 0;
+	border-radius: 6px;
+	overflow: hidden;
+	max-height: 0;
+	transition: .3s ease-in;
+}
+
+.selectBox .optionList::-webkit-scrollbar {
+	width: 6px;
+}
+
+.selectBox .optionList::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+.selectBox .optionList::-webkit-scrollbar-thumb {
+	background: #303030;
+	border-radius: 45px;
+}
+
+.selectBox .optionList::-webkit-scrollbar-thumb:hover {
+	background: #303030;
+}
+
+.selectBox.active .optionList {
+	max-height: 500px;
+}
+
+.selectBox .optionItem {
+	border-bottom: 1px dashed rgb(170, 72, 72);
+	padding: 5px 15px 5px;
+	transition: .1s;
+}
+
+.selectBox .optionItem:hover {
+	background: rgb(175, 93, 93);
+}
+
+.selectBox .optionItem:last-child {
+	border-bottom: 0 none;
+}
+
+.box-left {
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+}
+
+.bg-video {
+	margin-top: 40px;
+	width: 100%;
+	height: 190px;
+	border-radius: 7px;
+}
+
+.bg-video__content {
+	z-index: -2;
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+	background-size: cover
+}
+
+.btn-gradient {
+	margin: 5px;
+}
+
+.btn-gradient {
+	position: relative;
+	width: 150px;
+	background: calc(100% - 7px) center no-repeat;
+	padding: 8px 18px;
+	font-size: 14px;
+	border-radius: 10px;
+}
+
+.btn-gradient .optionList::-webkit-scrollbar-track {
+	background: #303030;
+}
+
+.product-point {
+	margin-top: 20px;
+	text-align: left;
+	margin-bottom: 20px;
+	text-align: left;
+}
+
+.table-type-top {
+	border-top: solid 1px #000;
+}
+
+.table-type-top tbody th {
+	text-align: left;
+	font-size: 16px;
+	border-right: solid 1px #e5e5e5;
+	border-bottom: solid 1px #e5e5e5;
+	font-weight: 700;
+	width: 18%;
+}
+
+.table-type-top tbody td {
+	padding: 10px 250px;
+	text-align: center;
+	border-bottom: solid 1px #e5e5e5;
+	color: #1c1c1c;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 20px;
+	text-align: center;
+	border-bottom: solid 1px #e5e5e5;
+}
+
+.table-type-mid {
+	border-top: solid 1px #000;
+}
+
+.table-type-mid tbody th {
+	text-align: left;
+	font-size: 16px;
+	border-right: solid 1px #e5e5e5;
+	border-bottom: solid 1px #e5e5e5;
+	font-weight: 700;
+	width: 15%;
+}
+
+.table-type-mid tbody td {
+	padding: 10px 20px;
+	border-bottom: solid 1px #e5e5e5;
+	color: #1c1c1c;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 20px;
+	text-align: center;
+}
+
+.table-type-mid>li {
+	margin-left: 0;
+	position: relative;
+	line-height: 1.4;
+	font-weight: 300;
+	text-align: left;
+}
+
+.table-type-mid-2>li {
+	margin-left: 0;
+	position: relative;
+	line-height: 1.4;
+	font-weight: 300;
+	text-align: left;
+}
+
+.table-type-mid {
+	margin-bottom: 80px;
+}
+
+tr {
+	display: table-row;
+	vertical-align: inherit;
+	border-color: inherit;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.bg-box {
+	background-color: #e3e0df;
+	padding: 18px 0px;
+	border-radius: 2px;
+	text-align: left;
+}
+
+.table-type-bottom-2 li {
+	margin-left: 0;
+	position: relative;
+	font-weight: 300;
+	text-align: left;
+	line-height: 1.5;
+	color: #666;
+	margin-bottom: 20px;
+}

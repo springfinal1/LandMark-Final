@@ -1,0 +1,12 @@
+-- SQL --
+
+--2023-11-10--
+create table user(
+user_no bigint auto_increment primary key,
+id varchar(100) not null,
+pwd varchar(100) not null,
+name varchar(100) not null,
+age int not null,
+phone_number varchar(100),
+grade varchar(100) default 'bronze',
+point bigint default 0);

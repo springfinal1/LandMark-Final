@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.easyfestival.www.repository.ReviewCommentDAO">
+
+	<insert id="ReviewCommentPost">
+		insert into review_comment (rc_content,rv_no,rc_writer) values(#{rcContent},#{rvNo},#{rcWriter})
+	</insert>
+	<select id="getCommentList" resultType="com.easyfestival.www.domain.ReviewCommentVO">
+		select * from review_comment where rv_no=#{rvNo}
+	</select>
+	<delete id="DeleteComment">
+		delete from review_comment where rc_no=#{rcNo}
+	</delete>
+	<update id="ModifyComment">
+		update review_comment set rc_content=#{rcContent} where rc_no=#{rcNo}
+	</update>
+	<select id="getCommentCount" resultType="int">
+		select count(rc_no) from review_comment where rv_no=#{rvNo}
+	</select>
+</mapper>

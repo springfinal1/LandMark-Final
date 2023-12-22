@@ -1,0 +1,301 @@
+@charset "UTF-8";
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.freetour-all-container{
+    width: 100%;
+    height: 100%;
+
+}
+
+.reservation-info{
+    width: 100%;
+    padding-top: 100px;
+    height: 600px;
+    border: 1px solid black;
+    background-image: url(/resources/image/list-image/항공기본.jpg);
+    background-size: cover; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.reservation-info div{
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.depInfo, .arrInfo, .pepleInfo{
+    text-align: center;
+}
+.pepleInfo{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.depArrInfo{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+}
+.depArrInfo > div:first-child{
+    margin-right: 100px;
+}
+.depArrInfo > div:last-child{
+    margin-left: 100px;
+}
+.arrInfo-div{
+    border: 1px solid #ccc;
+    width: 550px;
+    height: 250px;
+    border-radius: 9px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.arrInfo-header{
+    padding-top: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.arrInfo-div-span0{
+    font-weight: 700;
+    font-size: 16px;
+
+}
+.arrInfo-div-span1{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.arrInfo-div-span2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+.arrInfo-div-div{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+.reservation-btn, .arr-choice{
+    width: 100%;
+    height: 50px;
+    background-color: #222;
+    border: none;
+    font-weight: 700;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    border-bottom-right-radius: 9px;
+    border-bottom-left-radius: 9px;
+    
+
+}
+.arrInfo-i{
+    width: 50px;
+    height: 50px;
+    border: 2px solid dodgerblue;
+    border-radius: 50%;
+    position: relative;
+}
+#arr{
+    position: absolute;
+    transform: translate(-55%,-45%);
+    top: 45%;
+    left: 55%;
+    font-size: 20px;
+    color: dodgerblue;
+}
+#dep{
+    position: absolute;
+    transform: translate(-45%,-45%);
+    top: 45%;
+    left: 45%;
+    font-size: 20px;
+    color: dodgerblue;
+}
+.final-check-container{
+    position: absolute;
+    transform: translate(-50%,-50%);
+    left: 50%;
+    top: 450px;
+    width: 1000px;
+    height: 400px;
+    background-color: #f7f7f7;
+    /* z-index: 100; */
+    border-radius: 9px;
+}
+.final-sub-container{
+    padding: 20px;
+    height: 90%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+}
+.final-reser-info{
+    width: 70%;
+
+}
+.final-reser-payment{
+    width: 30%;
+    padding-left: 20px;
+    border-left: 2px dashed #ccc;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+.final-reser-payment-peple-info{
+    width: 100%;
+    height: 40%;
+}
+.final-reser-payment-peple-info > div{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding-right: 10px;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+.final-reser-payment-pay-info{
+    width: 100%;
+    height: 60%;
+}
+.final-reser-payment-pay-info > div:first-child{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    text-align: right;
+    padding-right: 10px;
+}
+.final-reser-payment-pay-info > div:last-child{
+    margin-top: 20px;
+}
+.final-reser-payment-pay-info > div:last-child > button{
+    background-color: #222;
+    color: #fff;
+    width: 280px;
+    height: 60px;
+    border: none;
+    font-weight: 700;
+    font-size: 18px;
+    border-radius: 9px;
+}
+
+.start-info{
+
+    margin-top: 30px;
+    margin-bottom: 15px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-left: 15px;
+    padding-right: 25px;
+}
+.blue-con{
+    background-color: #E53E30;
+    width: 100%;
+    height: 40px;
+    border-top-left-radius: 9px;
+    border-top-right-radius: 9px;
+}
+.end-info{
+
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-left: 15px;
+    padding-right: 25px;
+}
+.airport{
+    display: flex;
+    font-weight: 700;
+    font-size: 18px;
+    align-items: center;
+    padding-left: 20px;
+}
+.air-time{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+}
+.reser-pay{
+    font-family: 'SpoqaHanSansNeo';
+    color: #E53E30;
+    font-size: 32px;
+    font-weight: 700;
+}
+.air-detail{
+    padding: 5px;
+    border: 1px solid black;
+    cursor: pointer;
+    width: 70px;
+    text-align: center;
+}
+.reser-h1{
+    position: absolute;
+    transform: translate(-50%,-50%);
+    left: 30%;
+    top: 50%;
+}
+.depName, .depTime, .depAir , .arrName, .arrTime, .arrAir{
+    font-size: 23px;
+    font-weight: 700;
+}
+.depImg{
+    width: 60px;
+    height: 52px;
+}
+.noneAir{
+    width: 100%;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.none-airport{ 
+    width: 500px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;    
+
+}
+.return-btn{
+    width: 300px;
+    height: 50px;
+    background-color: #E53E30;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 700;
+    border-radius: 9px;
+}
+#noneAirport{
+    font-size: 80px;
+    font-weight: 600;
+    color: #222;
+}

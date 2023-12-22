@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.easyfestival.www.repository.OrderDAO">
+
+
+	<!-- 주문 정보 생성 -->
+	<!-- 주문 정보 생성 -->
+	<insert id="insert_pay" parameterType="orderVO">
+		INSERT INTO pay_order_user (order_num, pk_no, id, order_date, total_price,
+		imp_uid, user_count, sayong_pointeu, product_name, airplane)
+		VALUES (#{orderNum}, #{pkNo}, #{id}, #{orderDate}, #{totalPrice}, #{impUid},
+		#{userCount}, #{sayongPointeu}, #{productName}, #{airplane});
+	</insert>
+
+
+	<insert id="freeinfo_pay" parameterType="ftoVO">
+		INSERT INTO pay_order_user (order_num, id, total_price, imp_uid, user_count, airplane)
+		VALUES (#{orderNum}, #{id}, #{ftPrice}, #{impUid}, #{ftPeple}, #{airplane});
+	</insert>
+
+
+
+
+
+	<insert id="insert_payinfo" parameterType="payDTO">
+		insert into sc_pay
+		(id, order_num, pay_method, product_name,
+		pay_amount, pk_no,
+		sayong_pointeu)
+		values (#{id}, #{orderNum}, #{payMethod},
+		#{productName},
+		#{payAmount}, #{pkNo}, #{sayongPointeu})
+	</insert>
+
+
+	<!-- 마지막에 결제된 방금 결제된 주문정보 가져오기 -->
+	<select id="getLastPay" parameterType="payDTO"
+		resultType="payDTO">
+		SELECT * FROM sc_pay WHERE pay_num = (SELECT MAX(pay_num)
+		FROM sc_pay)
+	</select>
+
+	<!-- 결제 정보 가져오기 -->
+	<select id="getPay" resultType="payDTO">
+		SELECT * FROM
+		sc_pay WHERE pay_num
+		= #{payNum}
+	</select>
+
+	<delete id="orderCancle" parameterType="orderVO">
+		delete from
+		pay_order_user WHERE order_num=#{orderNum}
+	</delete>
+
+	<delete id="payMentCancle" parameterType="payDTO">
+		delete from sc_pay
+		WHERE order_num=#{orderNum}
+	</delete>
+
+	<select id="adminList" parameterType="orderVO"
+		resultType="orderVO">
+		SELECT *
+		from pay_order_user
+		WHERE order_num=#{orderNum}
+	</select>
+
+	<select id="getOrder" parameterType="orderVO"
+		resultType="orderVO">
+		SELECT *
+		from pay_order_user where id = #{id}
+		limit
+		#{ph.limitStart}, #{ph.listQty}
+	</select>
+
+
+
+	<select id="OrderCount" resultType="int">
+		select count(id) from
+		pay_order_user;
+	</select>
+
+
+	<select id="ollOrder" resultType="OllPayDTO">
+		SELECT * FROM pay_order_user o
+		JOIN package p ON o.pk_no = p.pk_no
+		JOIN airplane a ON a.pk_no =
+		o.pk_no
+		JOIN hotel h ON h.pk_no = o.pk_no
+		JOIN product_file pf ON
+		pf.pk_no = o.pk_no
+		WHERE o.id = #{id}
+		limit #{ph.limitStart},
+		#{ph.listQty}
+	</select>
+
+
+	<select id="ollList" resultType="OllPayDTO">
+		SELECT * FROM pay_order_user o
+		JOIN package p ON o.pk_no = p.pk_no
+		JOIN airplane a ON a.pk_no =
+		o.pk_no
+		JOIN hotel h ON h.pk_no = o.pk_no
+		JOIN product_file pf ON
+		pf.pk_no = o.pk_no
+		WHERE o.order_num = #{orderNum}
+	</select>
+
+	<!-- 마이페이지 예약내역 리스트용 -->
+	<select id="getPackageList" resultType="OllPayDTO">
+		SELECT * FROM pay_order_user o
+		JOIN package p ON o.pk_no = p.pk_no
+		JOIN airplane a ON a.pk_no = o.pk_no
+		JOIN hotel h ON h.pk_no = o.pk_no
+		WHERE o.id = #{id}
+	</select>
+
+	<update id="updateY">
+		UPDATE pay_order_user
+		SET confirmation = 'Y'
+		WHERE
+		order_num = #{orderNum};
+	</update>
+
+
+	<select id="getConfirmation" resultType="java.lang.String">
+		SELECT confirmation
+		FROM
+		pay_order_user
+		WHERE order_num = #{orderNum};
+	</select>
+
+
+</mapper>

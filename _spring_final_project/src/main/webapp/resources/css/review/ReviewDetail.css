@@ -1,0 +1,234 @@
+@charset "UTF-8";
+
+body {
+	position: relative;
+}
+/* detail-container{
+	margin: 100px 0px 50px 0px;
+} */
+
+.detail-head-div,.detail-middle-div,.recommend-div
+	,.review-comment-container,.detail-delmod-div{
+	width: 70%;
+
+}
+/* 수정 삭제 부분 */
+.detail-delmod-div{
+	margin: 120px 0px 10px 0px;
+	display: flex;
+	justify-content: flex-end;
+}
+.detail-delmod-div i{
+	margin-right: 3px;
+}
+.detail-delmod-div a:nth-child(n+2)::before{
+	padding:0px 5px 0px 5px;
+	content: "|";
+}
+
+.detail-delmod-div a{
+	color: black;
+	margin-right:7px;
+}
+.detail-delmod-div a :nth-child(n+2)::before{
+	
+	padding-left: 5px;
+	content: "|";
+}
+
+/* 헤더 영역 */
+.detail-head-div{
+    /* margin: 120px 0px 50px 0px; */
+    border-top: 1px solid #bbb;
+    border-bottom: 1px solid #bbb;
+    background-color: #eee;
+}
+.detail-head-div h3{
+	margin:10px 0px 10px 10px;
+}
+
+
+
+.head-text-div{
+	display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #bbb;
+    padding: 10px;
+    background-color: white;
+}
+
+.head-text-div div{
+	font-size: 13px;
+}
+.head-text-div div span:nth-child(n+2)::before{
+	margin-right:7px;
+	padding-left: 5px;
+	content: "|";
+	
+}
+
+.head-text-div div span a{
+	border: 1px solid #ccc;
+	border-radius: 50px;
+	background-color: #eee;
+	padding: 5px;	
+	text-decoration: none;
+	color: black;
+	font-size: 13px;
+}
+
+.detail-middle-div{
+	margin-bottom: 20px;
+}
+
+.detail-middle-div img{
+	width: 100%;
+}
+
+/* 좋아요 div 영역 */
+.recommend-div{
+	display: flex;
+	justify-content: center;
+	border-bottom: 1px solid black;
+	padding-bottom:10px;
+	margin-bottom: 10px;
+}
+
+
+#like{
+	width:120px;
+	background: white;
+	border: 1px solid #c4c4c4;
+	padding: 15px;
+	border-radius: 18px;
+}
+#like img{
+	width: 20px;
+	height: 20px;
+}
+
+
+/* 댓글 리스트 영역 수정본 */
+.cmt-list-div{
+	width:100%;
+	margin-bottom: 10px;
+	border: 1px solid #bbb;
+}
+.cmt-header{
+	display: flex;
+	justify-content: space-between;
+	padding: 5px;
+	border-bottom: 1px dashed #bbb;
+	background-color: #eee;
+	font-size: .85rem;
+}
+.cmt-id-div{
+	height:22px;
+	display: flex;
+  	justify-content: center;
+   	align-items:center; 
+  	
+}
+
+.cmt-reg-div button{
+	border: 1px solid #bbb;
+	border-radius: 5px;
+}
+
+
+.cmt-reg-div i{
+	margin-right: 3px;
+}
+
+.cmt-header button{
+	margin-left: 5px;
+}
+
+.cmt-content{
+	width:99%;
+	padding: 5px;
+	word-wrap: break-word;
+}
+
+/* 댓글 수정 영역 */
+.cmt-modify{
+	width: 95%;
+	height: auto;
+	border: 1px solid #bbb;
+	border-radius:5px;
+	margin-bottom: 10px;
+	display: none; 
+	
+	/* position:relative;
+	left:39px; */
+}
+
+.cmt-modify-writer{
+	border-bottom: 1px solid #bbb;
+	padding: 5px;
+	margin: 5px;
+}
+.cmt-modify-writer input{
+	border: none;
+	opacity: 0.5;
+}
+.cmt-modify-content{
+	width:99%;
+	height:auto;
+	padding: 5px;
+}
+.cmt-modify-content textarea{
+	width: 99%;
+	height: auto;
+	resize: none;
+	border: none;
+}
+
+.cmtModBtn{
+	border:1px solid #bbb;
+	border-radius: 4px;
+	/* position:relative;
+	left: 93%; */
+}
+
+
+
+/* 댓글 작성 영역 */
+.comment-write-div{
+	margin: 15px 0px 15px 0px;
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+}
+
+
+.comment-write-div div:first-child{
+	width: 10%;
+}
+
+.cmt-input-div{
+	width: 90%;
+}
+
+#cmtText{
+	width:100%;
+	height:100px;
+	box-sizing: border-box;
+	border:1px solid #cecdce;
+	resize: none;
+}
+
+#cmtPostBtn{
+	float:right;
+	width: 85px;
+	height: 31px;
+	font-size: 12px;
+    font-weight: bold;
+    border-color: #3b4890;
+    border-radius: 2px;
+    background: #3b4890;
+    color: white;
+}
+
+
+

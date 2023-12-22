@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.easyfestival.www.repository.HelpDAO">
+  	<insert id="register">
+  		insert into help(id, type, title, content) values(#{id}, #{type}, #{title}, #{content})
+  	</insert>
+  	
+  	<select id="getTotalCount" resultType="int">
+  		select count(help_no) from help
+  		<include refid="search"></include>
+  		
+  	</select>
+  	
+  	<select id="getList" resultType="hdto">
+  		select * from help
+  		<include refid="search"></include>
+  		order by help_no desc
+  	</select>
+  	
+  	<select id="getListAndPaging" resultType="hdto">
+  		select * from help
+  		<include refid="search"></include>
+  		order by help_no desc
+  		limit #{ph.limitStart}, #{ph.listQty}
+  	</select>
+  	
+  	<select id="getDetail" resultType="hdto">
+  		select * from help
+  		where help_no = #{helpNo}
+  	</select>
+  	
+  	<update id="registerAnswer">
+  		update help set answer = 'y', coment = #{coment}
+  		where help_no = #{helpNo}
+  	</update>
+  	
+  	
+  	<sql id="search">
+<!--   		<if test="!id.equals('') and !answer.euals('')">
+  			where id = #{id} and answer = #{answer}
+  		</if>
+  		<if test="!id.equals('')">
+  			where id = #{id}
+  		</if>
+  		<if test="!id.equals('') and !answer.euals('')">
+  			where id = #{id} and answer = #{answer}
+  		</if> -->
+  		
+  		
+  		<choose>
+  			<when test="!id.equals('') and !answer.equals('')">
+  				where id = #{id} and answer = #{answer}
+  			</when>
+  			<when test="id.equals('') and !answer.equals('')">
+  				where answer = #{answer}
+  			</when>
+  			<when test="!id.equals('') and answer.equals('')">
+  				where id = #{id}
+  			</when>
+  		</choose>
+  			
+  	</sql>
+  </mapper>
+  
+  
+  
+  
+  
+  

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+  
+  <configuration>
+	<settings>
+		<!-- db와 java의 다른 문장 표기법을 맞춰줌 -->
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
+	</settings>
+	
+   	<typeAliases>
+   		<typeAlias type="com.easyfestival.www.security.AuthVO" alias="authvo"/>
+   		<typeAlias type="com.easyfestival.www.security.UserVO" alias="uvo"/>
+  	</typeAliases>
+  	 
+</configuration>

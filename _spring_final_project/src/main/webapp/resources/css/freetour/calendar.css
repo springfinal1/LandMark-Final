@@ -1,0 +1,103 @@
+.thisMonth-cal, .nextMonth-cal{
+    width: 100%;
+    background-color: aquamarine;
+    display: flex;
+    font-size: 18px;
+    font-weight: 700;
+    flex-wrap: wrap;
+}
+.thisMonth-cal > div, .nextMonth-cal > div{
+    width: 14.28%;
+    background-color: red;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.calendar-div{
+    width: 100%;
+    padding-top: 40px;
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #ccc;
+}
+
+.calendar-div > div{
+    width: 50%;
+}
+.calendar-div > div > table{
+    padding-left: 30px;
+    padding-right: 30px;
+    width: 100%;
+}
+.calendar-div > div > table > td{
+    width: 60px;
+    height: 40px;
+}
+td{
+    text-align: center;
+    width: 60px;
+    height: 60px;
+}
+td > p{
+    font-size: 20px;
+}
+.yearMonth{
+    text-align: center;
+    font-size: 26px;
+    font-weight: 700;
+    padding-bottom: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+.cal-init-btn{
+    margin-top: 15px;
+    text-align: right;
+}
+.cal-init{
+    width: 80px;
+    height: 60px;
+    border-radius: 15px;
+    font-size: 18px;
+    background-color: #222222;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    margin-top: 30px;
+}
+.pastDay{
+    color: #ccc;
+}
+.today{
+    color: #E53E30;
+    font-weight: 700;
+    display: flex;
+    flex-direction: column;
+}
+.today::after{
+    content: "오늘";
+    font-size: 14px;
+
+}
+td > p{
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 9px;
+    padding-top: 10px;
+}
+
+.choiceDay{
+    background-color: #E53E30;
+    color: #fff;
+}
+.saturday{
+    color: #4b87ff;
+}
+.Calendar > thead > tr:first-child > td , .Calendar2 > thead > tr:first-child > td{
+    font-size: 20px;
+}
+.sunday{
+    color: #E53E30;
+}

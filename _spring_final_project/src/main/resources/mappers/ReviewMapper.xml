@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.easyfestival.www.repository.ReviewDAO">
+	<insert id="reviewRegister">
+		insert into review (title,content,id,secret) values
+		(#{title},#{content},#{id},#{secret})
+	</insert>
+	<select id="list" resultType="com.easyfestival.www.domain.reviewVO">
+		select * from review
+		<include refid="search"></include>
+		order by rv_no desc
+		limit #{pageStart},#{qty}
+	</select>
+	<select id="detail" resultType="com.easyfestival.www.domain.reviewVO">
+		select * from review rv where rv_no=#{rvNo}
+	</select>
+	<delete id="remove">
+		delete from review where rv_no=#{rvNo}
+	</delete>
+	<update id="modify">
+		update review set title=#{title},content=#{content},secret=#{secret} where rv_no=#{rvNo}
+	</update>
+	<update id="readCountUp">
+		update review set read_count=read_count+1 where rv_no=#{rvNo}
+	</update>
+	<select id="getTotalCount" resultType="int">
+		select count(rv_no) from review <include refid="search"></include>
+	</select>
+	<select id="LikeDistinction" resultType="com.easyfestival.www.domain.ReviewLikeHistoryVO">
+		select * from review_history where rv_no=#{rvNo} and user_no=#{userNo}
+	</select>
+	<delete id="deleteLike">
+		delete from review_history where rv_no=#{rvNo} and user_no=#{userNo}
+	</delete>
+	<insert id="insertLike">
+		insert into review_history values(#{rvNo},#{userNo})
+	</insert>
+	
+	<select id="bestList" resultType="com.easyfestival.www.domain.reviewVO">
+		select * from review rv
+		left join (select rv_no,count(rv_no)cmt_count from review_comment group by rv_no)rc using(rv_no)
+		left join (select rv_no,count(rv_no)like_count from review_history group by rv_no)rl using(rv_no)
+		<include refid="best"></include>
+		order by like_count desc
+		limit #{pageStart},#{qty}
+	</select>
+	
+	<select id="getbestTotalCount" resultType="int">
+		select count(rv_no) from review 
+		left join (select rv_no,count(rv_no)like_count from review_history group by rv_no)rl using(rv_no)
+		<include refid="best"></include>
+	</select>
+	
+	<select id="getLikeCount" resultType="int">
+		select count(rv_no) from review_history where rv_no=#{rvNo}
+	</select>
+
+	<sql id="search">
+		<if test="type!=null">
+		<trim prefix="where" prefixOverrides="OR">
+				<foreach collection="typeToArray" item="type">
+					<trim prefix="OR">
+						<choose>
+							<when test="type == 't'.toString()">
+								title like concat('%',#{keyword},'%')
+							</when>
+							<when test="type == 'c'.toString()">
+								content like concat('%',#{keyword},'%')
+							</when>
+						</choose>
+					</trim>
+				</foreach>
+			</trim>
+		</if>
+	</sql>
+	
+	<sql id="best">
+		<if test="type!=null">
+		<trim prefix="where" prefixOverrides="OR">
+				<foreach collection="typeToArray" item="type">
+					<trim prefix="OR">
+						<choose>
+							<when test="type == 't'.toString()">
+								title like concat('%',#{keyword},'%')and like_count > 0
+							</when>
+							<when test="type == 'w'.toString()">
+								id like concat('%',#{keyword},'%')and like_count > 0
+							</when>
+							<when test="type == 'c'.toString()">
+								content like concat('%',#{keyword},'%') and like_count > 0
+							</when>
+						</choose>
+					</trim>
+				</foreach>
+			</trim>
+		</if>
+		<if test="type==null">
+			where like_count > 0
+		</if>
+	</sql>
+</mapper>

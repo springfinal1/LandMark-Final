@@ -1,0 +1,244 @@
+body {
+   background-color: #ededed;
+}
+
+form {
+   width: 70%
+}
+
+button {
+   background-color: #9c27b0;
+   color: #ffffff;
+   font-size: 12px;
+   border: none;
+   border-radius: 3px;
+   padding: 12px 30px;
+}
+
+.container {
+   padding-top: 20px;
+   width: 100%;
+   margin: 0 auto;
+   margin-top: 200px;
+   margin-bottom: 180px;
+   background-color: white;
+}
+
+ul.tabs {
+   width: 100%;
+   margin: 0px;
+   padding: 0px;
+   list-style: none;
+   display: flex;
+   justify-content: flex-start;
+}
+
+ul.tabs li {
+   width: 50%;
+   background: none;
+   color: #222;
+   display: inline-block;
+   padding: 10px 15px;
+   cursor: pointer;
+   text-align: center;
+   font-size: 16px;
+}
+
+.tab-content {
+   display: none;
+   padding: 15px;
+}
+
+.sub {
+   display: none;
+}
+
+.sub div {
+   padding: 5px;
+}
+
+.sub p {
+   display: block;
+   font-size: 16px;
+   font-weight: 800;
+}
+
+.sub small {
+   display: block;
+}
+
+#tab-1 {
+   width: 100%;
+}
+
+.sub-container {
+   width: 100%;
+   display: flex;
+   justify-content: space-around;
+}
+
+#tab-1 .sub {
+   margin: 0px 10px 0px 10px;
+   width: 33%;
+   height: 100%;
+   padding: 15px;
+}
+
+#tab-1 .sub-container .sub div {
+   width: 100px;
+   height: 100px;
+   border: 4px solid #999999;
+   border-radius: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin-bottom: 10px;
+}
+
+#tab-1 .sub-container .sub div i {
+   font-size: 30px;
+   color: #999999;
+   user-select: none;
+}
+
+.tab1-low {
+   display: flex;
+   justify-content: flex-end;
+}
+
+/* tab-2 div 영역 */
+#tab-2 {
+   width: 100%;
+}
+
+/* prizes-table영역 */
+
+.prizes-table {
+   width: 100%;
+   border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+.prizes-table tr {
+   height: 50px;
+}
+
+.prizes-table thead th:first-child, .prizes-table tbody tr td:first-child
+   {
+   width: 20%;
+   text-align: center;
+}
+
+.prizes-table thead th:last-child, .prizes-table tbody tr td:last-child
+   {
+   width: 80%;
+   text-align: center;
+}
+
+
+.prizes-table-tbody tr {
+   background-color: #f1f4ff;
+}
+
+/* 왼쪽 상단만 둥글게 */
+.prizes-table-tbody tr td:first-child {
+   border-top-left-radius: 20px;
+   border-bottom-left-radius: 20px;
+}
+
+/* 오른쪽 상단만 둥글게 */
+.prizes-table-tbody tr td:last-child {
+   border-top-right-radius: 20px;
+   border-bottom-right-radius: 20px;
+}
+
+.td-span{
+   margin-left: 5px;
+}
+
+/* attendance-setting-div 영역*/
+.attendance-setting-div div{
+      margin-bottom: 10px;
+}
+.attendance-table{
+   width: 100%;
+   border-collapse: separate;
+    border-spacing: 0 10px;
+}
+.attendance-table tr {
+   height: 50px;
+   background-color: #f1f4ff;
+}
+.attendance-table tr th {
+   padding-left: 10px;
+   border-top-left-radius: 20px;
+   border-bottom-left-radius: 20px;
+}
+
+/* 오른쪽 상단만 둥글게 */
+.attendance-table tr td {
+   border-top-right-radius: 20px;
+   border-bottom-right-radius: 20px;
+}
+
+
+.tab2-low {
+   display: flex;
+   justify-content: space-between;
+}
+
+.tab2-low div {
+   display: flex;
+   justify-content: flex-start;
+}
+
+.tab2-low div button {
+   margin-right: 10px;
+}
+
+.tab3-low {
+   display: flex;
+   justify-content: space-between;
+}
+
+#tab-3 div {
+   margin-bottom: 20px;
+}
+
+#tab-3 label {
+   margin-right: 10px;
+}
+
+#evName, #evStart, #evEnd {
+   border: none;
+   border-bottom: 2px solid #999999;
+   outline: none;
+   width: 300px;
+}
+
+#tab-3 input:focus {
+   border-color: #4caf50;
+}
+
+/* current 영역 */
+ul.tabs li.current {
+   background: #9c27b0;
+   color: white;
+   box-shadow: 0 4px 20px 0px rgba(0, 0, 0, 0.14), 0 7px 10px -5px
+      rgba(156, 39, 176, 0.4);
+}
+
+.tab-content.current {
+   display: inherit;
+}
+
+.sub.current {
+   display: flex;
+   justify-content: center;
+   flex-direction: column;
+   align-items: center;
+}
+
+.nextButton, .prevButton, .submitButton {
+   color: white;
+}

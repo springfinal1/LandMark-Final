@@ -1,0 +1,172 @@
+@charset "UTF-8";
+
+body{
+    margin: 0;
+    padding: 0;
+}
+.product-container{
+    width: 100%;
+    padding-top: 8rem;
+    padding-bottom: 20rem;
+}
+
+.placeDiv{
+    position: absolute;
+    top: 50px;
+    background-color: rgba(255, 255, 255, .95);
+    transition: 2s;
+    width: 100vw;
+    height: 0;
+    display: flex;
+    justify-content: center;
+}
+.place-container{
+    position: relative;
+    width: 100%;
+}
+
+.place-h2{
+    text-align: center;
+    height: 30px;
+}
+
+#placeAll{
+    color: black;
+    text-decoration: none;
+    font-weight: 700;
+    
+}
+.place-drop-menu{
+    width: 950px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding-top: 40px;
+    height: 0;
+    justify-content: center;
+    gap: 15px;
+}
+.place-drop-menu > span{
+    width: 50%;
+    height: 50px;
+    text-align: center;
+    font-size: 0;
+    font-weight: 700;
+}
+.place-drop-menu > span > a{
+    color: #222;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.product-list-container{
+
+    padding-left: 20%;
+    padding-right: 20%;
+}
+.itemBox{
+    border: 1px solid #ccc;
+    width: 100%;
+    height: 300px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    display: flex;
+    
+    border-radius: 10px;
+}
+.imgZone{
+    width: 30%;
+    
+}
+.textDiv{
+	padding:30px 25px;
+    width: 70%;
+    display: flex;
+    justify-content: space-between;
+}
+.detailBtn{
+    border: 1px solid black;
+    background-color: transparent;
+    
+    height: 30px;
+    font-weight: 700;
+    font-size: 18px;
+    background-color: black;
+    color: white;
+    height: 50px;
+    width: 100%;
+}
+.detailBtn:hover{
+    border: 1px solid rgb(34, 34, 34);
+    background-color: rgb(55, 55, 55);
+    cursor: pointer;
+}
+
+
+.listImg{
+    width: 100%;
+    height: 100%;
+    border-top-left-radius: 10px;
+
+}
+.list-product{
+    width: 60%;
+}
+.list-price{
+    width: 40%;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.country{
+    padding: 15px 15px;
+}
+.list-price-heart{
+    display: flex;
+    justify-content: space-between;
+}
+.heart-btn{
+    font-size: 35px;
+    color: #ccc;
+    cursor: pointer;
+    
+}
+.list-product-price{
+    font-weight: 700;
+    font-size: 23px;
+}
+h5{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.check-heart{
+    color: #E53E30;
+}
+.noProduct{
+    padding-top: 200px;
+    padding-bottom: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.noProduct > div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.noProduct > div > span{
+    font-size: 70px;
+    font-weight: 700;
+    color: #E53E30;
+}
+.airdate{
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+}
+#countryZone-i, #airZone-i, #dateZone-i{
+    padding-right:  5px;
+}

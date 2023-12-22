@@ -1,0 +1,580 @@
+@charset "UTF-8";
+
+body{
+    margin: 0;
+    padding: 0;
+}
+.air-all-container{
+    width: 100%;
+}
+
+.trip-place-information{
+    position: relative;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 30%;
+    left: 50%;
+    color: white;
+    border: 3px solid white;
+    width: 430px;
+    height: 120px;
+    font-size: 32px;
+    font-weight: 700;
+    
+    border-bottom: none;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.trip-place-information::after{
+    content: "";
+    width: 20%;
+    height: 3px;
+    background-color: white;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+.trip-place-information::before{
+    content: "";
+    width: 20%;
+    height: 3px;
+    background-color: white;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+
+.placeInfo{
+    z-index: 15;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    bottom: -25%;
+    left:50%;
+    background-color: transparent;
+    font-size: 28px;
+}
+.air-reservation-div{
+    width: 100%;
+    height: 1000px;
+    background-image: url(/resources/image/list-image/유럽.jpg);
+    background-size: cover;
+    position: relative;
+}
+
+.air-reservation-info{
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 60%;
+    left: 50%;
+    background-color: white;
+    width: 1200px;
+    border-radius: 10px;
+}
+.air-info{
+    padding: 32px 48px;
+}
+.air-tranport{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.16);
+}
+.air-operation-info  a{
+    color: #494949;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 16px;
+}
+.arrival , .departure{
+    outline: none;
+    text-align: center;
+}
+
+
+.freeChecked{
+    border-bottom: 3.5px solid red;
+}
+.fa-solid{
+    font-size: 20px;
+    color: #494949;
+    cursor: pointer;
+    padding-right: 20px;
+}
+
+.travel-info{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 0;
+    padding: 24px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.16);
+    margin: 0;
+}
+.travel-info  li{
+    list-style: none;  
+}
+
+.departure, .arrival{
+    width: 250px;
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.87);
+    font-weight: 700;
+    font-size: 32px;
+    border: none;
+}
+.cal-Btn{
+    display: block;
+    margin-left: 50px;
+    width: 500px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 700;
+    color: black;
+}
+.travel-peple-count{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 32px 0 0;
+    cursor: pointer;
+}
+.trip-peple-count{
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.47);
+}
+.peple-count{
+    margin: 8px 0 0;
+    font-weight: 700;
+    font-size: 24px;
+    width: 400px;
+}
+.search-btn{
+    font-size: 24px;
+    color: #fff;
+    background-color: #E53E30;
+    padding: 18px 0
+    ;
+    width: 200px;
+    display: block;
+    text-align: center;
+    border-radius: 9px;
+    font-weight: 700;
+}
+
+.peple-modal-container{
+    background-color: #E53E30;
+    position: absolute;
+    background-color: #fff;
+    border-radius: 9px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.16);
+    width: 900px;
+    height: 600px;
+    display: none;
+    transform: translate(-50%,-50%);
+    top: 25%;
+    left: 50%;
+}
+
+.modal-close{
+    width: 100%;
+    text-align: right;
+    padding-top: 16px;
+    box-sizing: border-box;
+    padding-right: 15px;
+}
+
+.closebtn{
+    cursor: pointer;
+    font-size: 30px;
+  
+}
+.peple-info{
+    display: flex;
+    flex-direction: row;
+    padding: 30px 30px;
+}
+
+.peple-count-input{
+    border-right: 1px solid #ccc;
+    padding-right: 40px;
+}
+.peple-seat-btn{
+    padding-left: 40px;
+}
+.peple-count-input , .peple-seat-btn{
+    width: 50%;
+    height: 100%;
+}
+.peple-count-input > p, .peple-seat-btn > p{
+    margin: 0 0 24px;
+}
+
+
+ul, li{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.peple-count-input > ul >li > p:first-child{
+    font-size: 18px;
+    font-weight: 700;
+    color: black;
+}
+.peple-count-input > ul >li > p:last-child{
+    color: rgba(0,0,0,0.47);
+    font-size: 16px;
+}
+
+.peple-count-input > ul >li{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.peple-count-input > ul >li p{
+    margin: 0;
+}
+.fisrt-li{
+    margin-top: 10px;
+}
+
+.second-li , .third-li{
+    margin-top: 24px;
+}
+
+.peple-seat-btn > ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.seat{
+    margin-top: 10px;
+    background-color: #fff;
+    border: 1px solid black;
+    width: 180px;
+    height: 95px;
+    box-sizing: border-box;
+    border-radius: 6px;
+    text-align: center;
+    color: black;
+    line-height: 96px;
+    font-weight: 700;
+    cursor: pointer;
+}
+.peple-input-text{
+    border: none;
+    width: 48px;
+    height: 48px;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+    padding: 0;
+}
+
+.minus-btn , .plus-btn{
+    border: 1px solid rgba(0, 0, 0, 0.16);
+    background-color: transparent;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    margin: 0;
+    padding: 0;
+}
+
+.peple-footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-left: 30px;
+    padding-top: 30px;
+}
+.peple-footer button{
+    background-color: #222;
+    color: #fff;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 9px;
+    width: 90px;
+    height: 50px;
+    box-sizing: border-box;
+    margin-top: 30px;
+}
+.trip-place-container{
+    display: none;
+    border: 1px solid black;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    left: 50%;
+    top: 30%;
+    width: 1200px;
+    height: 700px;
+    background-color: #fff;
+    border-radius: 9px;
+}
+.place-close{
+    cursor: pointer;;
+}
+.trip-place-header{
+    padding: 24px;
+    display: flex;
+    justify-content: space-between;
+}
+.trip-place-header > span {
+    font-weight: 700;
+    font-size: 18px;
+}
+.trip-place-body{
+    padding: 24px 24px 0;
+    margin: 12px 0 0;
+}
+.trip-place-search{
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 20px;
+    border-bottom: 1px solid black;
+    margin-bottom: 20px;
+}
+.trip-place-input{
+    width: 90%;
+    height: 50px;
+}
+.trip-place-input > input{
+    width: 90%;
+    height: 100%;
+    border: none;
+    outline: none;
+    font-size: 32px;
+    font-weight: 700;
+}
+.trip-place-button{
+    width: 10;
+}
+.trip-place-button > button{
+    background-color: #222222;
+    width: 100px;
+    height: 50px;
+    color: #fff;
+    border: none;
+    border-radius: 9px;
+    cursor: pointer;
+}
+.trip-place-city{
+    display: flex;
+    flex-direction: row;
+    padding: 24px;
+}
+
+.search-result{
+    width: 20%;
+}
+
+.search-content{
+    width: 85%;
+}
+.place-margin{
+    margin-left: 48px;
+}
+.place-margin strong{
+    margin-bottom: 15px;
+}
+.place-margin > ul li{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    cursor: pointer;
+}
+
+.trip-place-ul{
+    display: flex;
+    flex-direction: row;
+}
+.imageTag{
+    width: 0;
+    height: 0;
+}
+.cal-container{
+    position: absolute;
+    width: 1300px;
+    height: 850px;
+    background-color: white;
+    display: none;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    border-radius: 6px;
+}
+.cal-sub-container{
+    padding: 24px;
+}
+.subdiv-one{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+.subdiv-one:first-child{
+    font-weight: 700;
+    font-size: 20px;
+}
+.all-month{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid #ccc;
+}
+.thisMonth{
+    width: 50%;
+}
+
+.nextMonth{
+    width: 50%;
+    margin-left: 30px;
+}
+.nextMonth > table{
+    width: 100%;
+}
+.nextMonth-div, .thisMonth-div{
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: 700;
+    font-size: 26px;
+}
+.div-prev-next{
+    display: flex;
+    justify-content: space-between;
+}
+#nextBtn , #prevBtn{
+    font-size: 35px;
+    font-weight: 700;
+    padding: 1.8px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.themeTravel{
+    margin: 40px auto 0;
+    width: 1600px;
+    margin-top: 100px;
+    margin-bottom: 200px;
+}
+.themeTravel > h3{
+    font-size: 28px;
+    font-weight: 700;
+    margin-left: 20px;
+}
+.themeImg{
+    width: 350px;
+    height: 320px;
+    border-radius: 9px;
+    
+}
+
+.themeTravel > ul > li{
+    width: 350px;
+    height: 320px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    position: relative;
+}
+.themeTravel > ul > li > a > span{
+    color: white;
+    position: absolute;
+    bottom: 10%;
+    left: 10%;
+}
+.themeTravel > ul{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.result-search{
+    margin-top: 30px;
+    margin-left: 40px;
+    
+    display: none;
+}
+.searchPlaceInfo{
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+.search-city-kor{
+    color: black;
+    margin-right: 30px;
+    font-weight: 700;
+}
+.search-city-info{
+    margin-left: 30px;
+    color: rgba(0, 0, 0, 0.47);
+}
+
+#tripCloseBtn{
+    border: none;
+    background-color: #ccc;
+    color: black;
+    text-decoration: none;
+    padding: 5px;
+    border-radius: 50%;
+}
+.searchPlaceInfo > p {
+
+}
+.pepleCount-input{
+    border: none;
+    outline: none;
+    color: rgba(0, 0, 0, 0.87);
+    font-weight: 700;
+    font-size: 24px;
+    cursor: pointer;
+}
+.pepleAllCount{
+    cursor: none;
+    background-color: transparent;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    width: 9px;
+    font-weight: 700;
+    color: black;
+}
+
+.choice-li{
+    background-color: #E53E30;
+    color: #fff;
+}
+
+.sub-but{
+    display: none;
+}
+.cal-input{
+    font-family: 'SpoqaHanSansNeo';
+    font-size: 25px;
+    color: rgba(0, 0, 0, 0.87);
+    font-weight: 700;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.adult-minus-btn, .adult-plus-btn , .child-minus-btn, .child-plus-btn, .infant-minus-btn,.infant-plus-btn{
+    background-color: transparent;
+    border: 2px solid black;
+    border-radius: 50%;
+    padding: 5px;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}

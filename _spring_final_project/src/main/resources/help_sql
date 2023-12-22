@@ -1,0 +1,15 @@
+-- help sql --
+CREATE TABLE `help` (
+  `help_no` bigint NOT NULL AUTO_INCREMENT,
+  `id` varchar(100) NOT NULL,
+  `type` varchar(100) DEFAULT NULL,
+  `title` varchar(200) DEFAULT NULL,
+  `content` text,
+  `answer` char(1) DEFAULT 'n',
+  `coment` text,
+  `reg_date` datetime DEFAULT CURRENT_TIMESTAMP,
+  `mod_date` datetime DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`help_no`),
+  KEY `id_idx` (`id`),
+  CONSTRAINT `fk_help_id` FOREIGN KEY (`id`) REFERENCES `user` (`id`) ON DELETE CASCADE
+)
