@@ -1,9 +1,13 @@
+.event-register-container {
+   width: 50%;
+   padding-top: 20px;
+   margin: 0 auto;
+   margin-top: 200px;
+   margin-bottom: 180px;
+   background-color: white;
+}
 body {
    background-color: #ededed;
-}
-
-form {
-   width: 70%
 }
 
 button {
@@ -15,14 +19,6 @@ button {
    padding: 12px 30px;
 }
 
-.container {
-   padding-top: 20px;
-   width: 100%;
-   margin: 0 auto;
-   margin-top: 200px;
-   margin-bottom: 180px;
-   background-color: white;
-}
 
 ul.tabs {
    width: 100%;

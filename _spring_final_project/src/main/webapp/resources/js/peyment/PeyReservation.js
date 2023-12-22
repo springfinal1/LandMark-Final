@@ -51,7 +51,7 @@ function requestPay() {
         pg: selectedValue,
         pay_method: "089",
         merchant_uid: paymentUuid(), //가맹점 주문번호 (아임포트를 사용하는 가맹점에서 중복되지 않은 임의의 문자열을 입력)
-        name: "이성훈",
+        name: "랜드마크",
         amount: ftPrice,
         buyer_email : "",
         buyer_name : "bb",
@@ -104,7 +104,6 @@ function requestPay() {
                         })
                         .done(function(res) {
                             if (res > 0) {
-                                console.log(res);
                                 alert('결제완료')
                                 createPayInfo();
                             }

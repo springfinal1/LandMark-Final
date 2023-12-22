@@ -94,7 +94,7 @@
 				<div class="my-list">
 					<!-- 항공예약내역 영역 -->
 					<c:choose>
-						<c:when test="${not empty faList}">
+						<c:when test="${not empty ftList}">
 							<div class="list-items">
 								<div class="fixed-title">
 									<span class="ticket-date">출발/도착</span>
@@ -103,13 +103,14 @@
 									<span class="ticket-seatType">좌석유형</span>
 									<span class="ticket-people">인원수</span>
 								</div>
-								<c:forEach items="${faList}" var="faList">
-								<div class="qa-list ticket-list">
-									<span class="ticket-date">20231220/20231224</span>
-                                    <span class="ticket-arrival">${faList.pkContinent}</span>
-									<span class="ticket-flighType">왕복</span>
-									<span class="ticket-seatType">일반석</span>
-									<span class="ticket-people">1</span>
+								<c:forEach items="${ftList}" var="ftList">
+								<div class="qa-list ticket-list" data-seat="${ftList.seatType}" data-city="${ftList.cityCode}" data-departure="${ftList.departureDay}"
+									 data-gate="${ftList.gate}">
+									<span class="ticket-date">${ftList.departureDay}/${ftList.arrivalDay}</span>
+                                    <span class="ticket-arrival">${ftList.arrival}</span>
+									<span class="ticket-flighType">${ftList.flightType}</span>
+									<span class="ticket-seatType">${ftList.seatType}</span>
+									<span class="ticket-people">${ftList.ftPeple}</span>
 								</div>
 								</c:forEach>
 							</div>
@@ -219,7 +220,7 @@
 	<div class="join-background">
 		<div class="join-modal">
 			<span class="material-symbols-outlined" id="confirm-btn">close</span>
-			<span class="modal-text"></span>
+			
 			<span><button type="button" id="confirm-btn">확인</button></span>
 		</div>
 	</div>
@@ -227,13 +228,14 @@
     <!-- 항공권 모달 -->
     <div class="flight-ticket-modal-back">
         <div class="flight-ticket-modal">
+        	<span class="material-symbols-outlined" id="closeTicketModal">close</span>
             <div class="section-left">
                 <div class="header-left">AIR TICKET</div>
                 <div class="body-left">
                     <div>
                         <span>ICN</span>
                         <i class="fa-solid fa-plane"></i>
-                        <span class="airport-code">JFK</span><!-- airportCode 입력영역 -->
+                        <span class="city-code">JFK</span><!-- cityCode 입력영역 -->
                     </div>
                     <div>
                         <div>
@@ -279,5 +281,5 @@
     </div>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 </body>
-<script type="text/javascript" src="resources/js/user/detail.js"></script>
+<script type="text/javascript" src="/resources/js/user/detail.js"></script>
 </html>

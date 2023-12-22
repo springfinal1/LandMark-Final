@@ -1,76 +1,105 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="/resources/css/review/ReviewRegister.css" rel="stylesheet">
-
-<!-- include libraries(jQuery, bootstrap) -->
-<link
-	href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
-	rel="stylesheet">
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
-<!-- include summernote css/js -->
-<link
-	href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css"
-	rel="stylesheet">
-<script
-	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
-
+<link href="/resources/css/review/ReviewDetail.css" rel="stylesheet">
 </head>
 <body>
 <jsp:include page="/WEB-INF/views/common/header.jsp"></jsp:include>
-		<!-- <hr> -->
-		<form action="/review/reviewRegister" method="post">
-			<div class="title-div">
-				<div>제목</div>
-				<input type="text" name="title" class="inp">
-			</div>
-			
-			<div class="write-div">
-				<textarea id="summernote" name="content"></textarea>
-			</div>
-			
-			<input type="hidden" name="id" value="${uvo.id}">
-			
-			<div class="secret-div">
-				<input type="checkbox" name="secret" value="Y">
-				<span>비밀글로 작성하시겠습니까?</span>
-			</div>
-		
-			<button type="submit" class="submit">작성</button>
-		</form>
-		
-<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
+<!-- <div class="detail-container"> -->
 
-	<script type="text/javascript" src="/resources/js/review/summernote.js"></script>
+	<div class="detail-delmod-div">
+		<c:if test="${uvo.id eq rvo.id }">
+			<a href="/review/remove?rvNo=${rvo.rvNo}">
+				<i class="fa-solid fa-trash"></i>삭제
+			</a>
+			<a href="/review/modify?rvNo=${rvo.rvNo}">
+				<i class="fa-solid fa-pencil"></i>수정
+			</a>
+		</c:if>
+	</div>
+	<div class="detail-head-div">
+		<h3>${rvo.title}</h3>
+		
+		<div class="head-text-div">
+			<div>
+				<span>${rvo.id}</span>
+			</div>
+		
+			<div>
+				<span>조회수:${rvo.readCount}</span>
+				<span><a href="#ReviewCmtArea" id="cmtCount"></a></span>
+				<span id="headLikeSpan">좋아요 </span>
+				<span>${rvo.regAt}</span>
+			</div>
+		</div>
+	</div>
+	
+	<div class="detail-middle-div">
+	
+		<div id="contentArea">
+			${rvo.content}
+		</div>
+	</div>
+	<!-- 좋아요 영역 -->
+	<div class="recommend-div">
+				<button type="button" id="like">
+					<img src="/resources/image/review-image/love.png">
+					<span id="likeSpan"></span>
+				</button>
+	</div>
+	
+	<!-- 댓글 영역 -->
+	<div class="review-comment-container">
+		<!-- 댓글 표시 영역 -->
+		<div id="ReviewCmtArea"></div>
+	
+	
+		<!-- 댓글 등록 영역 -->
+		<div class="comment-write-div">
+			<div>
+				<span id="cmtWriter" >${uvo.id}</span> 		
+			</div>
+			<div class="cmt-input-div">
+				<textarea rows="10" cols="30" id="cmtText"></textarea>
+				<button  type="button" id="cmtPostBtn">등록</button>	
+			</div>
+		</div>
+	</div>
+	<div></div>
+	
+
+
+	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
+	
 	<script type="text/javascript">
-		function uploadImage(file) {
-			var formData = new FormData();
-			formData.append('file', file);
-
-			$.ajax({
-				url : '/review/image',
-				method : 'POST',
-				data : formData,
-				contentType : false,
-				processData : false,
-				enctype : 'multipart/form-data',
-				success : function(url) {
-					console.log('Image uploaded successfully. URL:', url);
-					var imgTag = '<img src="' + url + '" />';
-					$('#summernote').summernote('pasteHTML', imgTag);
-				},
-				error : function() {
-					console.error('Error uploading image');
-				}
-			});
+		let rnoVal=`<c:out value='${rvo.rvNo}'/>`;
+		let idVal=`<c:out value='${uvo.id}'/>`;
+		console.log('rnoVal:'+rnoVal+',idVal:'+idVal);
+	</script>
+	
+	<script type="text/javascript" src="/resources/js/review/ReviewLike.js"></script>
+	<script type="text/javascript" src="/resources/js/review/ReviewComment.js"></script>
+	
+	<script type="text/javascript">
+		getCommentList(rnoVal);
+		UserLikeDisplay();
+		spreadCommentCount(rnoVal);
+		spreadLikeCount(rnoVal);
+	</script>
+	
+	<script type="text/javascript">
+	function autoResize(textarea) {
+		  textarea.style.height = 'auto';
+		  textarea.style.height = textarea.scrollHeight + 'px';
 		}
 	</script>
+	
+
 </body>
 </html>
