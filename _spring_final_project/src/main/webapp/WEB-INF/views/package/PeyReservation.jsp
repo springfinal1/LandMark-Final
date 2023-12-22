@@ -74,8 +74,8 @@
 								<div class="txt_area">
 									<div class="k1-kwk-itinerary_box">
 										<div class="tit-box">
-											<p>인천 ICN</p>
-											<p>시간~</p>
+											<p>인천ICN</p>
+											<p>${freeTitcketOrderVO.departureDay }</p>
 										</div>
 										<span class="k1-kwk-ico-arr"><img
 											src="https://air.kyowontour.com/air/imgs_ibe/b2c/24_Oneway_arr_ico@2x.png"></span>
@@ -87,7 +87,7 @@
 								</div>
 							</td>
 							<td>
-								<div class="txt-area">일반석</div>
+								<div class="txt-area">${freeTitcketOrderVO.seatType }</div>
 							</td>
 							<td>
 								<div class="txt-area">1개</div>
@@ -140,23 +140,23 @@
 								<div class="txt_area">
 									<div class="k1-kwk-itinerary_box">
 										<div class="tit-box">
-											<p>인천 ICN</p>
-											<p>시간~</p>
+											<p>${freeTitcketOrderVO.arrival }${freeTitcketOrderVO.cityCode }</p>
+											<p></p>
 										</div>
 										<span class="k1-kwk-ico-arr"><img
 											src="https://air.kyowontour.com/air/imgs_ibe/b2c/24_Oneway_arr_ico@2x.png"></span>
 										<div class="tit-box">
 											<p>인천 ICN</p>
-											<p>시간~</p>
+											<p>${freeTitcketOrderVO.arrivalDay }</p>
 										</div>
 									</div>
 								</div>
 							</td>
 							<td>
-								<div class="txt-area">일반석</div>
+								<div class="txt-area">${freeTitcketOrderVO.seatType }</div>
 							</td>
 							<td>
-								<div class="txt-area">1개</div>
+								<div class="txt-area">개</div>
 							</td>
 						</tr>
 					</tbody>
@@ -200,7 +200,7 @@
 					</thead>
 					<tbody>
 						<tr>
-							<td><span>${freeTitcketOrderVO.arruvalDay }</span></td>
+							<td><span>${freeTitcketOrderVO.arrivalDay }</span></td>
 							<td><span>${freeTitcketOrderVO.seatType }</span></td>
 							<td><span>${freeTitcketOrderVO.flightType }</span></td>
 							<td><span>${freeTitcketOrderVO.ftPeple }</span></td>

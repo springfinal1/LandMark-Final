@@ -210,7 +210,7 @@ public class PeymentController {
 	@RequestMapping(value = "/complete", method = RequestMethod.POST)
 	@ResponseBody
 	public int paymentComplete(HttpSession session, String imp_uid, String merchant_uid, String totalPrice,
-			@RequestBody OrderVO orderVO, @RequestBody FreeTitcketOrderVO freeTitcketOrderVO) throws Exception {
+			@RequestBody OrderVO orderVO) throws Exception {
 		log.info(" orderDTO >>>> {}", orderVO);
 		String token = payService.getToken();
 		
@@ -233,14 +233,11 @@ public class PeymentController {
 		
 		orderService.insert_pay(orderVO);
 		
-//		freeTitcketOrderVO.setOrderNum(orderVO.getOrderNum());
-		
-//		freeTitcketOrderService.update_num(freeTitcketOrderVO, orderVO.getId());
 		return res;
 
 	}
 
-	@GetMapping("/")
+	@GetMapping("/complete")
 	public String getOrderComplete(@RequestParam long payNum, OrderVO orderVO, HttpSession session, Model model)
 			throws Exception {
 

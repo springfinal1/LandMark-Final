@@ -1,5 +1,7 @@
 package com.easyfestival.www.domain;
 
+import java.sql.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,6 +30,9 @@ public class FreeTitcketOrderVO {
 	private long ftPeple;
 	private String gate;
 	
-	
+	private String airlineArr;
+	private String flightIdArr;
+	private String airlineDep;
+	private String flightIdDep;
 
 }

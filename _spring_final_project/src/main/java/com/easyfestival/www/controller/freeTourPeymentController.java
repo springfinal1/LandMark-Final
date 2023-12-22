@@ -75,44 +75,6 @@ public class freeTourPeymentController {
 				"P9nYyc55RyknowCswTwMrhHUdHc2A0MJJGTjzuEGbUjsmm9XFl60NOBNleO8eljJn82tjH4O7I0kKQdr");
 	}
 	
-	@RequestMapping(value = "pay_info", method = RequestMethod.GET)
-	@ResponseBody
-	public ResponseEntity<Long> payInfoPOST(Model model, HttpServletRequest request, HttpServletResponse response,
-			@RequestParam String imp_uid, HttpSession session, @RequestParam long pkNo,
-			@RequestParam String enteredPoints) throws Exception {
-		
-		IamportResponse<Payment> result = api.paymentByImpUid(imp_uid);
-		PayDTO payDTO = new PayDTO();
-		long point = 0; // 기본값 설정
-
-		if (enteredPoints != null && !enteredPoints.isEmpty()) {
-			try {
-				point = Long.parseLong(enteredPoints);
-				System.out.println("포인트 제대로 들어옴 ? +" + point);
-			} catch (NumberFormatException e) {
-				e.printStackTrace(); // 또는 로깅 등을 통해 예외를 기록할 수 있음
-			}
-		}
-
-		System.out.println(((UserVO) session.getAttribute("uvo")).getId());
-		payDTO.setId(((UserVO) session.getAttribute("uvo")).getId());
-		payDTO.setOrderNum(Long.parseLong(result.getResponse().getMerchantUid()));
-		payDTO.setPayMethod(result.getResponse().getPayMethod());
-		payDTO.setProductName(result.getResponse().getName());
-		System.out.println("result.getResponse().getName()" + result.getResponse().getName());
-		payDTO.setPayAmount(result.getResponse().getAmount().longValue());
-		payDTO.setPkNo(pkNo);
-		payDTO.setSayongPointeu(point);
-		orderService.insert_payinfo(payDTO);
-
-		payDTO = orderService.getLastPay(payDTO);
-		System.out.println("이건" + payDTO);
-
-		int isOK = memberShipService.updateMemberShip(((UserVO) session.getAttribute("uvo")).getId(), point);
-
-		return new ResponseEntity<Long>(payDTO.getPayNum(), HttpStatus.OK);
-	}
-
 	
 	
 	@RequestMapping(value = "/complete", method = RequestMethod.POST)
@@ -170,7 +132,8 @@ public class freeTourPeymentController {
 			@RequestParam("departureDay") String departureDay, @RequestParam("arrivalDay") String arrivalDay,
 			@RequestParam("seatType") String seatType, @RequestParam("flightType") String flightType,
 			@RequestParam("tfPeple") String tfPeple, @RequestParam("arrival") String arrival, @RequestParam("date") String date, @RequestParam("gate") String gate, 
-			@RequestParam("cityCode") String cityCode, 
+			@RequestParam("cityCode") String cityCode, @RequestParam("airlineArr") String airlineArr, @RequestParam("flightIdArr") String flightIdArr, 
+			@RequestParam("airlineDep") String airlineDep, @RequestParam("flightIdDep") String flightIdDep,
 			RedirectAttributes redirectAttributes, HttpSession session, Model model) {
 		
 		
@@ -180,6 +143,14 @@ public class freeTourPeymentController {
 		long tfPepleA = Long.parseLong(tfPeple);
 		
 		System.out.println("date" + date); 
+		
+		String[] dateArray = date.split("~");
+		
+		departureDay = dateArray[0].trim();
+		
+		arrivalDay = dateArray[1].trim();
+		
+		
 		freeTitcketOrderVO.setArrival(arrival); // 도착공항
 		System.out.println("arruval" + arrival);
 		freeTitcketOrderVO.setFtPrice(ftPriceA); //가격
@@ -191,9 +162,10 @@ public class freeTourPeymentController {
 		freeTitcketOrderVO.setGate(gate);
 		freeTitcketOrderVO.setCityCode(cityCode);
 		freeTitcketOrderVO.setId(((UserVO) session.getAttribute("uvo")).getId());
-		
-		
-		
+		freeTitcketOrderVO.setAirlineArr(airlineArr);
+		freeTitcketOrderVO.setFlightIdArr(flightIdArr);
+		freeTitcketOrderVO.setAirlineDep(airlineDep);
+		freeTitcketOrderVO.setFlightIdDep(flightIdDep);
 		
 		System.out.println("freeTitcketOrderVO" + freeTitcketOrderVO);
 		model.addAttribute(freeTitcketOrderVO);

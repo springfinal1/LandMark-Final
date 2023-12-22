@@ -2,39 +2,43 @@ const input = fTOVO;
 console.log(fTOVO);
 // 정규식 패턴
 
-const inputString = fTOVO;
 
-const pattern = /orderNum=(\d+), id=([\w\d]+), airplane=([^,]+), arruval=([^,]+), departureDay=([^,]+), arruvalDay=([^,]+), seatType=([^,]+), flightType=([^,]+), ftPrice=(\d+), ftPeple=(\d+), impUid=([^)]+)/;
+
+const inputString =fTOVO;
+
+const pattern = /orderNum=(\d+),\s*id=([\w\d]+),\s*airplane=([^,]+),\s*arrival=([^,]+),\s*cityCode=([^,]+),\s*departureDay=([^,]+),\s*arrivalDay=([^,]+),\s*impUid=([^,]+),\s*seatType=([^,]+),\s*flightType=([^,]+),\s*ftPrice=(\d+),\s*ftPeple=(\d+),\s*gate=(\d+)/;
 
 const matches = inputString.match(pattern);
 
-
-
-    let orderNum =paymentUuid();
+    let orderNum = parseInt(matches[1]);
     let id = matches[2];
     let airplane = matches[3];
-    let arruval = matches[4];
-    let departureDay = matches[5];
-    let arruvalDay = matches[6];
-    let seatType = matches[7];
-    let flightType = matches[8];
-    let ftPrice = parseInt(matches[9]);
-    let ftPeple = parseInt(matches[10]);
-    let impUid = matches[11];
+    let arrival = matches[4];
+    let cityCode = matches[5]; // 추가된 부분
+    let departureDay = matches[6];
+    let arrivalDay = matches[7];
+    let impUid = matches[8];
+    let seatType = matches[9];
+    let flightType = matches[10];
+    let ftPrice = parseInt(matches[11]);
+    let ftPeple = parseInt(matches[12]);
+    let gate = parseInt(matches[13]);
 
 
     // 추출된 정보 활용
-    console.log("Order Number:", orderNum);
-    console.log("ID:", id);
-    console.log("Airplane:", airplane);
-    console.log("Arrival:", arruval);
-    console.log("Departure Day:", departureDay);
-    console.log("Arrival Day:", arruvalDay);
-    console.log("Seat Type:", seatType);
-    console.log("Flight Type:", flightType);
-    console.log("Flight Price:", ftPrice);
-    console.log("Number of People:", ftPeple);
-
+  console.log("orderNum:", orderNum);
+    console.log("id:", id);
+    console.log("airplane:", airplane);
+    console.log("arrival:", arrival);
+    console.log("cityCode:", cityCode);
+    console.log("departureDay:", departureDay);
+    console.log("arrivalDay:", arrivalDay);
+    console.log("impUid:", impUid);
+    console.log("seatType:", seatType);
+    console.log("flightType:", flightType);
+    console.log("ftPrice:", ftPrice);
+    console.log("ftPeple:", ftPeple);
+    console.log("gate:", gate);
 
 
 function requestPay() {
@@ -77,12 +81,16 @@ function requestPay() {
                             "orderNum" : rsp.merchant_uid,
                             "id" : id,
                             "departureDay" : departureDay,
-                            "arruvalDay" : arruvalDay,
+                            "arrivalDay" : arrivalDay,
                             "seatType" : seatType,
                             "flightType" : flightType,
                             "ftPrice" : ftPrice,
                             "ftPeple" : ftPeple,
-                            "impUid" : rsp.imp_uid
+                            "impUid" : rsp.imp_uid,
+  							  "gate": gate,
+    "airplane": airplane,
+    "arrival": arrival,
+    "cityCode": cityCode
                             
                         });
                         console.log(data);
@@ -97,8 +105,8 @@ function requestPay() {
                         .done(function(res) {
                             if (res > 0) {
                                 console.log(res);
-                                alert('주문정보 저장 성공')
-                                createPayInfo(uid);
+                                alert('결제완료')
+                                createPayInfo();
                             }
                             else {
                                 console.log(data);
@@ -132,35 +140,8 @@ function paymentUuid(){
     return orderNum;
 }
 
-function createPayInfo(uid) {
-    // 결제정보 생성 및 테이블 저장 후 결제완료 페이지로 이동 
-    console.log("시작");
-    console.log(uid);
-    $.ajax({
-        type: 'get',
-        url: '/peyment/pay_info',
-        dataType: 'json',
-        contentType: 'application/json',
-        data: {
-            'imp_uid': uid
-            
-        },
-
-        success: function(data) {
-            
-            var message = '결제 성공!\n결제완료 페이지로 이동합니다.';
-
-        // 사용자에게 간단한 경고창 표시
-            alert(message);
-
-
-        window.location.replace('/peyment/complete?payNum=' + data);
-            
-        },
-        error: function() {
-            alert('결제정보 저장 통신 실패');
-        }
-    });
+function createPayInfo() {
+    window.location.href = '/';
 }
 
 

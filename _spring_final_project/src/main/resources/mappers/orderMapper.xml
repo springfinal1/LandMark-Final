@@ -124,13 +124,14 @@
 		order_num = #{orderNum};
 	</update>
 
-
 	<select id="getConfirmation" resultType="java.lang.String">
 		SELECT confirmation
 		FROM
 		pay_order_user
 		WHERE order_num = #{orderNum};
 	</select>
+
+
 
 
 </mapper>
