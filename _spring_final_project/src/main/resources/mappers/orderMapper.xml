@@ -10,15 +10,15 @@
 	<!-- 주문 정보 생성 -->
 	<insert id="insert_pay" parameterType="orderVO">
 		INSERT INTO pay_order_user (order_num, pk_no, id, order_date, total_price,
-		imp_uid, user_count, sayong_pointeu, product_name, airplane)
+		imp_uid, user_count, sayong_pointeu, product_name)
 		VALUES (#{orderNum}, #{pkNo}, #{id}, #{orderDate}, #{totalPrice}, #{impUid},
-		#{userCount}, #{sayongPointeu}, #{productName}, #{airplane});
+		#{userCount}, #{sayongPointeu}, #{productName});
 	</insert>
 
 
 	<insert id="freeinfo_pay" parameterType="ftoVO">
 		INSERT INTO pay_order_user (order_num, id, total_price, imp_uid, user_count, airplane)
-		VALUES (#{orderNum}, #{id}, #{ftPrice}, #{impUid}, #{ftPeple}, #{airplane});
+		VALUES (#{orderNum}, #{id}, #{ftPrice}, #{impUid}, #{ftPeple}, 'A');
 	</insert>
 
 

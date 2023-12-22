@@ -1,5 +1,7 @@
 package com.easyfestival.www.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
@@ -24,6 +26,11 @@ public class FreeTitcketOrderServiceImple implements FreeTitcketOrderService {
 	public void update_num(FreeTitcketOrderVO freeTitcketOrderVO, String id) {
 		ftodao.update_num(freeTitcketOrderVO, id);
 
+	}
+
+	@Override
+	public List<FreeTitcketOrderVO> getFreeTicketList(String id) {
+		return ftodao.getFreeTicketList(id);
 	}
 
 }

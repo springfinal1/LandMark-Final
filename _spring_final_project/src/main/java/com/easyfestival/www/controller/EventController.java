@@ -199,7 +199,7 @@ public class EventController {
 	public String eventRemove(@RequestParam("evNo")int evNo)
 	{
 		isOk=esv.eventRemove(evNo);
-		return "redirect:/event/eventList";
+		return "redirect:/event/OneventList";
 	}
 	@GetMapping("/eventModify")
 	public String eventModify(Model m,@RequestParam("evNo")int evNo)

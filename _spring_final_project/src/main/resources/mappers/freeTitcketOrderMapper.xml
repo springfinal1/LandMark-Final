@@ -23,6 +23,9 @@
 		WHERE id = #{id};
 	</update>
 
+	<select id="getFreeTicketList" resultType="ftoVO">
+		select * from free_ticket_order where id = #{id}
+	</select>
 
 
 </mapper>

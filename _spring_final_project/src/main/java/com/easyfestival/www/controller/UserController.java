@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.easyfestival.www.domain.FavoriteDTO;
+import com.easyfestival.www.domain.FreeTitcketOrderVO;
 import com.easyfestival.www.domain.HelpDTO;
 import com.easyfestival.www.domain.MemberShipVO;
 import com.easyfestival.www.domain.OllPayDTO;
@@ -31,6 +32,7 @@ import com.easyfestival.www.domain.UserInfoDTO;
 import com.easyfestival.www.handler.PagingHandler;
 import com.easyfestival.www.security.AuthVO;
 import com.easyfestival.www.security.UserVO;
+import com.easyfestival.www.service.FreeTitcketOrderService;
 import com.easyfestival.www.service.HelpService;
 import com.easyfestival.www.service.MailService;
 import com.easyfestival.www.service.MemberShipService;
@@ -49,8 +51,9 @@ public class UserController {
    private final UserService usv;
    private final HelpService hsv;
    private final MailService msv;
-    private final MemberShipService memberShipService;
-    private final OrderService oderService;
+   private final MemberShipService memberShipService;
+   private final OrderService oderService;
+   private final FreeTitcketOrderService ftsv;
    private final BCryptPasswordEncoder bcEncoder; // password 암호화 객체
    
    @GetMapping("index")
@@ -170,10 +173,13 @@ public class UserController {
       MemberShipVO msvo = memberShipService.getmemberShip(uvo.getId());
       // 관심상품 리스트
       List<FavoriteDTO> faList = usv.getFavoriteList(uvo.getId());
+      // 항공권 리스트
+      List<FreeTitcketOrderVO> ftList = ftsv.getFreeTicketList(uvo.getId());
       model.addAttribute("msvo", msvo); // 멤버쉽정보
       model.addAttribute("hList", hList);
       model.addAttribute("packList", packageList);
       model.addAttribute("faList", faList);
+      model.addAttribute("ftList", ftList);
    }
 
    // 아이디, 비밀번호 찾기

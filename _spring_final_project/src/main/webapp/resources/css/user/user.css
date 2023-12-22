@@ -466,6 +466,8 @@
 	display: flex;
 	align-items: center;
 	font-weight: 700;
+	padding-left: 15px;
+	box-sizing: border-box;
 }
 .list-items>.qa-list{
 	width: 100%;
@@ -475,6 +477,11 @@
 	justify-content: flex-start;
 	margin-top: 1rem;
 }
+.qa-list{
+	padding-left: 15px;
+	box-sizing: border-box;
+}
+
 /* 내역 고정 메뉴 */
 .inquiry-type{
 	/* 문의유형 */
@@ -558,12 +565,12 @@
 /* 항공권 내역*/
 .ticket-date{
 	/* 항공권 스케쥴 */
-	width: 35%;
+	width: 40%;
 	height: 100%;
 }
 .ticket-arrival{
 	/* 도착공항 */
-	width: 25%;
+	width: 20%;
 	height: 100%;
 }
 .ticket-flighType{
@@ -754,6 +761,7 @@
     display: none;
 }
 .flight-ticket-modal{
+	position:relative;
     position: fixed;
     top:50%;
     left:50%;
@@ -858,4 +866,12 @@
 }
 .barcode{
     display: flex;
+}
+#closeTicketModal{
+	position: absolute;
+	top:-40px;
+	right:0;
+	cursor: pointer;
+	font-size: 35px;
+	color:#fff;
 }

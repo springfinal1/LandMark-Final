@@ -54,21 +54,18 @@ events.forEach(function (event) {
       i.style.color = '#999999';
     })
 
-    console.log(evSelec.value);
 
     if(event_id=='rouletteEv'){
-
-      
       document.querySelector('.roulette-setting-div').style.display='block';
-      
-      console.log(document.querySelector('.roulette-setting-div'));
       document.querySelector('.attendance-setting-div').style.display='none';
-      
+      document.querySelector('.prize-add').style.display='block'
+      document.querySelector('.prize-del').style.display='block'
     }
     else if(event_id=='AttendanceEv'){
       document.querySelector('.attendance-setting-div').style.display='block';
       document.querySelector('.roulette-setting-div').style.display='none';
-      console.log(document.querySelector('.attendance-setting-div'));
+      document.querySelector('.prize-add').style.display='none'
+      document.querySelector('.prize-del').style.display='none'
     }
     
     let div = document.querySelector('.' + event_id);
@@ -130,6 +127,27 @@ prevbtns.forEach(function (prevbtn) {   //모든 prev button 에 이벤트 추�
 let prizeAdd=document.querySelector('.prize-add');
 
 prizeAdd.addEventListener('click',()=>{
-  let prizesUl=document.querySelector('.prizes-ul');
-  prizesUl.innerHTML+=`<li><input type="text" name="prizes[]"></li>`;
+  // let prizesUl=document.querySelector('.prizes-ul');
+  // let eleCount = prizesUl.childElementCount+1;
+  // prizesUl.innerHTML+=`<li><span>${eleCount}.</span><input type="text" name="prizes[]"><span>Point</span></li>`;
+
+  let prizesTable=document.querySelector('.prizes-table tbody');
+  let childCount = prizesTable.childElementCount+1;
+  prizesTable.innerHTML+=`<tr>
+  <td>${childCount}</td><td><input type="text" name="prizes[]"><span class="td-span">Point</span></td></tr>`;
+})
+
+
+let prizedel=document.querySelector('.prize-del');
+
+prizedel.addEventListener('click',()=>{
+  let prizesTable=document.querySelector('.prizes-table tbody');
+  let rowCount = prizesTable.rows.length;
+
+      if (rowCount > 1) {
+        prizesTable.deleteRow(rowCount - 1);
+      } else {
+         alert("더 이상 삭제할 행이 없습니다.");
+      }
+
 })
