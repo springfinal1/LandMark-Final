@@ -103,6 +103,7 @@
                      
                      
                      <input type="hidden" name="departureDay" value="${aivo.departure }">
+                     
                      <input type="hidden" name="arrivalDay" value="${aivo.arrival }">
                      
                      
