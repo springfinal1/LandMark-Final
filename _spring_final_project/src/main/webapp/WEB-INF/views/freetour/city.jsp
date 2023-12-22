@@ -94,29 +94,23 @@
                      <span class="pep-cnt">${aivo.pepleCount }</span>
                      <span class="reser-pay">${aivo.price }원</span>
                   </div>
-                  <form action="/freeTourPeyment/PeyReservation" method="post">
+                  <form action="/freeTourPeyment/PeyReservation" method="post" accept-charset="UTF-8">
                      <input type="hidden" name=ftPrice value="${aivo.price}">
-                     <input type="hidden" name=arrival value="${aivo.arrival }">
-                     
-                     
-                     <input type="hidden" name=date value="${aivo.date }">
-                     
-                     
-                     <input type="hidden" name="departureDay" value="${aivo.departure }">
-                     
-                     <input type="hidden" name="arrivalDay" value="${aivo.arrival }">
-                     
-                     
+                     <input type="hidden" name=arrival value="${aivo.arrival }">                                       
+                     <input type="hidden" name=date value="${aivo.date }">                                         
+                     <input type="hidden" name="departureDay" id="departureDay">                     
+                     <input type="hidden" name="arrivalDay" id="arrivalDay">                                          
                      <input type="hidden" name="seatType" value="${aivo.seat }">
                      <input type="hidden" name="flightType" value="${aivo.verification }">
                      <input type="hidden" name="tfPeple" value="${aivo.peple }">
                      <input type="hidden" name="gate" id="gateNumber">
-                     <input type="hidden" name="cityCode" value="${dep }">
-                     
+                     <input type="hidden" name="cityCode" value="${dep }">                    
                      <input type="hidden" name="airlineArr" id="airlineArr">
                      <input type="hidden" name="flightIdArr" id="flightIdArr">
                      <input type="hidden" name="airlineDep" id="airlineDep">
-                     <input type="hidden" name="flightIdDep" id="flightIdDep">  
+                     <input type="hidden" name="flightIdDep" id="flightIdDep">
+                     <input type="hidden" name="airplane" value='A'>
+                     <input type="hidden" name="ftPeple" value="${aivo.peple }"> 
                      <div>
                         <button type="submit" class="submitBtn">예약하기</button>
                      </div>
@@ -152,6 +146,9 @@
                               </div>
                               <div class="arrInfo-div-span2">
                                  <strong>도착일자/시간</strong>
+                                 
+                                 <input type="hidden" value="${depInfo.scheduleDateTime }" class="dep-Day">
+                                 
                                  <span>
                                     <fmt:parseDate value="${depInfo.scheduleDateTime }" pattern="yyyyMMddHHmm" var="depDate"/>
                                     <fmt:formatDate value="${depDate }" pattern="yyyy년 MM월 dd일 HH:mm" />
@@ -169,6 +166,7 @@
                   <div>
                      <c:forEach items="${arrInfo }" var="arrInfo">
                      <input type="hidden" name="gatenumber" value="${arrInfo.gatenumber }" id="arrGate">
+                     <h1>${arrInfo.gatenumber }</h1>
                         <div class="arrInfo-div">
                            <div class="arrInfo-header">
                               <span class="arrInfo-div-span0">${arrInfo.airport } <i class="fa-solid fa-right-long"></i> ${startAirport }</span>
@@ -182,8 +180,11 @@
                               <div class="arrInfo-i">
                                  <i class="fa-solid fa-plane-arrival" id="arr"></i>
                               </div>
-                              <div class="arrInfo-div-span2">
+                              <div class="arrInfo-div-span2">                          
                                  <strong>도착일자/시간</strong>
+                                 
+                                 <input type="hidden" value="${arrInfo.scheduleDateTime }" class="arr-Day">
+                                 
                                  <span>
                                     <fmt:parseDate value="${arrInfo.scheduleDateTime }" pattern="yyyyMMddHHmm" var="depDate"/>
                                     <fmt:formatDate value="${depDate }" pattern="yyyy년 MM월 dd일 HH:mm" />

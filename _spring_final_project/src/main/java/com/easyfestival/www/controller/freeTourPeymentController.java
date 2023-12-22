@@ -128,47 +128,17 @@ public class freeTourPeymentController {
 	
 	
 	@PostMapping("/PeyReservation")
-	public String handleReservation(@RequestParam("ftPrice") String ftPrice,
-			@RequestParam("departureDay") String departureDay, @RequestParam("arrivalDay") String arrivalDay,
-			@RequestParam("seatType") String seatType, @RequestParam("flightType") String flightType,
-			@RequestParam("tfPeple") String tfPeple, @RequestParam("arrival") String arrival, @RequestParam("date") String date, @RequestParam("gate") String gate, 
-			@RequestParam("cityCode") String cityCode, @RequestParam("airlineArr") String airlineArr, @RequestParam("flightIdArr") String flightIdArr, 
-			@RequestParam("airlineDep") String airlineDep, @RequestParam("flightIdDep") String flightIdDep,
+	public String handleReservation(
+			FreeTitcketOrderVO ftvo,
 			RedirectAttributes redirectAttributes, HttpSession session, Model model) {
 		
 		
 		
-		FreeTitcketOrderVO freeTitcketOrderVO = new FreeTitcketOrderVO();
-		long ftPriceA = Long.parseLong(ftPrice);
-		long tfPepleA = Long.parseLong(tfPeple);
-		
-		System.out.println("date" + date); 
-		
-		String[] dateArray = date.split("~");
-		
-		departureDay = dateArray[0].trim();
-		
-		arrivalDay = dateArray[1].trim();
 		
 		
-		freeTitcketOrderVO.setArrival(arrival); // 도착공항
-		System.out.println("arruval" + arrival);
-		freeTitcketOrderVO.setFtPrice(ftPriceA); //가격
-		freeTitcketOrderVO.setDepartureDay(departureDay); // 출발일
-		freeTitcketOrderVO.setArrivalDay(arrivalDay); // 도착일
-		freeTitcketOrderVO.setSeatType(seatType); // 좌석타입
-		freeTitcketOrderVO.setFlightType(flightType); // 왕복 편도
-		freeTitcketOrderVO.setFtPeple(tfPepleA); // 인원
-		freeTitcketOrderVO.setGate(gate);
-		freeTitcketOrderVO.setCityCode(cityCode);
-		freeTitcketOrderVO.setId(((UserVO) session.getAttribute("uvo")).getId());
-		freeTitcketOrderVO.setAirlineArr(airlineArr);
-		freeTitcketOrderVO.setFlightIdArr(flightIdArr);
-		freeTitcketOrderVO.setAirlineDep(airlineDep);
-		freeTitcketOrderVO.setFlightIdDep(flightIdDep);
 		
-		System.out.println("freeTitcketOrderVO" + freeTitcketOrderVO);
-		model.addAttribute(freeTitcketOrderVO);
+		System.out.println("freeTitcketOrderVO" + ftvo);
+		model.addAttribute("ftvo",ftvo);
 
 		// 여기에서 폼 데이터를 사용하여 원하는 로직 수행
 		return "/package/PeyReservation";

@@ -1,44 +1,53 @@
 const input = fTOVO;
+
 console.log(fTOVO);
-// 정규식 패턴
+
+const inputString = fTOVO;
+
+let departureDay = document.querySelector('.depDay').innerHTML; 
+let arrivalDay = document.querySelector('.arrDay').innerHTML;
+let flightType = document.querySelector('.flight-id').innerHTML;
+let ftPrice = document.querySelector('.ft-Price').innerHTML;
+let ftPeple = document.querySelector('.ft-Peple').innerHTML;
 
 
+// let orderNum = parseInt(matches[1]);
+// let id = matches[2];
+// let airplane = matches[3];
+// let arrival = matches[4];
+// let cityCode = matches[5];
+// let departureDay = matches[6];
+// let arrivalDay = matches[7];
+// let impUid = matches[8];
+// let seatType = matches[9];
+// let flightType = matches[10];
+// let ftPrice = parseInt(matches[11]);
+// let ftPeple = parseInt(matches[12]);
+// let gate = matches[13];
+// let airlineArr = matches[14];
+// let flightIdArr = matches[15];
+// let airlineDep = matches[16];
+// let flightIdDep = matches[17];
 
-const inputString =fTOVO;
+// // 예제로 변수 값 출력
+// console.log("orderNum:", orderNum);
+// console.log("id:", id);
+// console.log("airplane:", airplane);
+// console.log("arrival:", arrival);
+// console.log("cityCode:", cityCode);
+// console.log("departureDay:", departureDay);
+// console.log("arrivalDay:", arrivalDay);
+// console.log("impUid:", impUid);
+// console.log("seatType:", seatType);
+// console.log("flightType:", flightType);
+// console.log("ftPrice:", ftPrice);
+// console.log("ftPeple:", ftPeple);
+// console.log("gate:", gate);
+// console.log("airlineArr:", airlineArr);
+// console.log("flightIdArr:", flightIdArr);
+// console.log("airlineDep:", airlineDep);
+// console.log("flightIdDep:", flightIdDep);
 
-const pattern = /orderNum=(\d+),\s*id=([\w\d]+),\s*airplane=([^,]+),\s*arrival=([^,]+),\s*cityCode=([^,]+),\s*departureDay=([^,]+),\s*arrivalDay=([^,]+),\s*impUid=([^,]+),\s*seatType=([^,]+),\s*flightType=([^,]+),\s*ftPrice=(\d+),\s*ftPeple=(\d+),\s*gate=(\d+)/;
-
-const matches = inputString.match(pattern);
-
-    let orderNum = parseInt(matches[1]);
-    let id = matches[2];
-    let airplane = matches[3];
-    let arrival = matches[4];
-    let cityCode = matches[5]; // 추가된 부분
-    let departureDay = matches[6];
-    let arrivalDay = matches[7];
-    let impUid = matches[8];
-    let seatType = matches[9];
-    let flightType = matches[10];
-    let ftPrice = parseInt(matches[11]);
-    let ftPeple = parseInt(matches[12]);
-    let gate = parseInt(matches[13]);
-
-
-    // 추출된 정보 활용
-  console.log("orderNum:", orderNum);
-    console.log("id:", id);
-    console.log("airplane:", airplane);
-    console.log("arrival:", arrival);
-    console.log("cityCode:", cityCode);
-    console.log("departureDay:", departureDay);
-    console.log("arrivalDay:", arrivalDay);
-    console.log("impUid:", impUid);
-    console.log("seatType:", seatType);
-    console.log("flightType:", flightType);
-    console.log("ftPrice:", ftPrice);
-    console.log("ftPeple:", ftPeple);
-    console.log("gate:", gate);
 
 
 function requestPay() {
@@ -51,7 +60,7 @@ function requestPay() {
         pg: selectedValue,
         pay_method: "089",
         merchant_uid: paymentUuid(), //가맹점 주문번호 (아임포트를 사용하는 가맹점에서 중복되지 않은 임의의 문자열을 입력)
-        name: "이성훈",
+        name: "랜드마크",
         amount: ftPrice,
         buyer_email : "",
         buyer_name : "bb",
@@ -79,7 +88,7 @@ function requestPay() {
                         // 데이터를 json으로 보내기 위해 바꿔준다.
                         data = JSON.stringify({
                             "orderNum" : rsp.merchant_uid,
-                            "id" : id,
+                            "id" : idVal,
                             "departureDay" : departureDay,
                             "arrivalDay" : arrivalDay,
                             "seatType" : seatType,
@@ -87,10 +96,10 @@ function requestPay() {
                             "ftPrice" : ftPrice,
                             "ftPeple" : ftPeple,
                             "impUid" : rsp.imp_uid,
-  							  "gate": gate,
-    "airplane": airplane,
-    "arrival": arrival,
-    "cityCode": cityCode
+                   	       "gate": gate,
+   					   	   "airplane": airplane,
+  						   "arrival": arrival,
+  						  "cityCode": cityCode
                             
                         });
                         console.log(data);
@@ -104,7 +113,6 @@ function requestPay() {
                         })
                         .done(function(res) {
                             if (res > 0) {
-                                console.log(res);
                                 alert('결제완료')
                                 createPayInfo();
                             }
@@ -135,7 +143,7 @@ function paymentUuid(){
     
     let orderNum = year + month + day;
     for(let i=0;i<10;i++) {
-        orderNum += Math.floor(Math.random() * 8);	
+        orderNum += Math.floor(Math.random() * 8);   
     }
     return orderNum;
 }
@@ -177,9 +185,3 @@ document.addEventListener("DOMContentLoaded", function() {
 
     });
 });
-
-
-
-
-
-

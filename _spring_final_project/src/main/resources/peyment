@@ -1,6 +1,6 @@
 2023-12-15
 
-
+//예약
 CREATE TABLE `pay_order_user` (
   `order_num` bigint NOT NULL AUTO_INCREMENT,
   `id` varchar(45) NOT NULL,
@@ -11,17 +11,18 @@ CREATE TABLE `pay_order_user` (
   `imp_uid` varchar(100) DEFAULT NULL,
   `user_count` int DEFAULT NULL,
   `sayong_pointeu` bigint DEFAULT NULL,
+  `confirmation` char(1) DEFAULT 'N',
+  `airplane` varchar(1) DEFAULT NULL,
   PRIMARY KEY (`order_num`)
-) 
+)
 
-
+//결제
 CREATE TABLE `sc_pay` (
   `pay_num` bigint NOT NULL AUTO_INCREMENT,
   `pay_method` varchar(45) DEFAULT NULL,
-  `pay_date` datetime DEFAULT CURRENT_TIMESTAMP,
+  `pay_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `pay_amount` bigint DEFAULT NULL,
   `order_num` bigint DEFAULT NULL,
-  `sc_paycol` varchar(45) DEFAULT NULL,
   `id` varchar(45) DEFAULT NULL,
   `pk_no` bigint DEFAULT NULL,
   `product_name` varchar(50) DEFAULT NULL,
@@ -29,8 +30,9 @@ CREATE TABLE `sc_pay` (
   PRIMARY KEY (`pay_num`),
   KEY `fk_order_num_idx` (`order_num`),
   CONSTRAINT `fk_order_num` FOREIGN KEY (`order_num`) REFERENCES `pay_order_user` (`order_num`) ON DELETE CASCADE ON UPDATE CASCADE
-) 
+)
 
+//멤버쉽
 CREATE TABLE `membership` (
   `id` varchar(50) NOT NULL,
   `total_price` bigint DEFAULT '0',
@@ -39,34 +41,21 @@ CREATE TABLE `membership` (
   PRIMARY KEY (`id`)
 )
 
-ALTER TABLE sc_pay
-add sayong_pointeu bigint;
-
-ALTER TABLE pay_order_user
-add sayong_pointeu bigint;
-
-ALTER TABLE pay_order_user
-add confirmation CHAR(1);
-
-
-ALTER TABLE sc_pay
-MODIFY COLUMN pay_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP;
-
-ALTER TABLE sc_pay
-drop COLUMN sc_paycol;
-
+//항공
 CREATE TABLE `free_ticket_order` (
-  `ft_no` bigint auto_increment,
-  `id` varchar(100) NOT NULL,
-`airplane` varchar(1) DEFAULT 'A',
-  `city_name` varchar(100) DEFAULT NULL,
+  `order_num` bigint NOT NULL,
+  `id` varchar(100) DEFAULT NULL,
+  `airplane` varchar(1) DEFAULT 'A',
+  `arrival` varchar(100) DEFAULT NULL,
   `departure_day` varchar(100) DEFAULT NULL,
-  `arruval_day` varchar(100) DEFAULT NULL,
+  `arrival_day` varchar(100) DEFAULT NULL,
   `seat_type` varchar(100) DEFAULT NULL,
   `flight_type` varchar(100) DEFAULT NULL,
-  `airport_code`  varchar(100) DEFAULT NULL,
-  `ft_price` long DEFAULT NULL,
-  `ft_peple` long DEFAULT NULL,
-  PRIMARY KEY (`ft_no`)
-);
+  `ft_price` mediumtext,
+  `ft_peple` mediumtext,
+  `city_code` varchar(45) DEFAULT NULL,
+  `gate` varchar(45) DEFAULT NULL
+) 
+
+
 
