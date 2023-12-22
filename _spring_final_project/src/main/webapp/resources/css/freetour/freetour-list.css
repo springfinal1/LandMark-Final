@@ -185,7 +185,7 @@ body{
 .final-reser-payment-pay-info > div:last-child{
     margin-top: 20px;
 }
-.final-reser-payment-pay-info > div:last-child > button{
+.submitBtn{
     background-color: #222;
     color: #fff;
     width: 280px;
@@ -194,6 +194,8 @@ body{
     font-weight: 700;
     font-size: 18px;
     border-radius: 9px;
+    cursor: pointer;
+    margin-top: 50px;
 }
 
 .start-info{
