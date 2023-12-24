@@ -1,6 +1,8 @@
 package com.easyfestival.www.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
@@ -102,6 +104,14 @@ public class ProductController {
 		
 		m.addAttribute("pldto", pldto.get(0));
 		return "/product/detail";
+	}
+	@RequestMapping(value = "peopleVal", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Map<String,String>> peopleCount(@RequestParam("peopleCount")String peopleCount, Model model){
+		Map<String,String> result = new HashMap<>();
+		result.put("result", peopleCount);
+		log.info("인원수 >>>>>>>>>>> {} ", result);
+		model.addAttribute("result",result);
+		return ResponseEntity.ok(result);
 	}
 
 	@GetMapping("reservation")

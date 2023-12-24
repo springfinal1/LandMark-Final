@@ -56,6 +56,17 @@
 	<select id="getLikeCount" resultType="int">
 		select count(rv_no) from review_history where rv_no=#{rvNo}
 	</select>
+	
+	<select id="mylist" resultType="com.easyfestival.www.domain.reviewVO">
+		select * from review
+		where id = #{id}
+		order by rv_no desc
+		limit #{pgvo.pageStart},#{pgvo.qty}
+	</select>
+	
+	<select id="getMyTotalCount" resultType="int">
+		select count(rv_no) from review <include refid="search"></include> and id=#{id}
+	</select>
 
 	<sql id="search">
 		<if test="type!=null">

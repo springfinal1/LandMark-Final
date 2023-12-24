@@ -50,6 +50,10 @@ public interface EventService {
 
 	void addSpecialPoint(String id, int specialPoint);
 
+	void rouletteModify(rouletteVO rlvo);
+
+	void attendanceModify(attendanceVO atvo);
+
 
 	
 

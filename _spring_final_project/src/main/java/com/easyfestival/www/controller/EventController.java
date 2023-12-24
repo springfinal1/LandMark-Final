@@ -85,8 +85,6 @@ public class EventController {
 					prizes+=",";
 			}
 			rlvo.setPrizes(prizes);
-			
-			log.info("rlvo:"+prizes);
 
 			esv.rouletteRegister(rlvo);
 		}
@@ -199,7 +197,7 @@ public class EventController {
 	public String eventRemove(@RequestParam("evNo")int evNo)
 	{
 		isOk=esv.eventRemove(evNo);
-		return "redirect:/event/OneventList";
+		return "redirect:/event/eventList";
 	}
 	@GetMapping("/eventModify")
 	public String eventModify(Model m,@RequestParam("evNo")int evNo)
@@ -209,9 +207,35 @@ public class EventController {
 		return "/event/EventModify";
 	}
 	@PostMapping("/eventModify")
-	public String eventModify(eventVO evo)
+	public String eventModify(@ModelAttribute("edto") eventDTO edto)
 	{
-		isOk=esv.eventModify(evo);
+		log.info("모디파이 edto"+edto);
+		log.info("모디파이 evno"+edto.getEvo().getEvNo());
+		isOk=esv.eventModify(edto.getEvo());
+		if(edto.getEvo().getEvType().equals("rouletteEv")) {
+			rouletteVO rlvo=new rouletteVO();
+			rlvo.setEvNo(esv.lastEvno());
+			String prizes="";
+			for(int i=0;i<edto.getPrizes().size();i++) 
+			{	//배열 합쳐서 문자열 만들기
+				prizes+=edto.getPrizes().get(i);
+				if(i!=edto.getPrizes().size()-1)
+					prizes+=",";
+			}
+			rlvo.setPrizes(prizes);
+			esv.rouletteModify(rlvo);
+		}
+		else {
+			attendanceVO atvo=new attendanceVO();
+			atvo.setEvNo(edto.getEvo().getEvNo());
+			atvo.setFullAttendancePrize(edto.getAtvo().getFullAttendancePrize());
+			atvo.setPoint(edto.getAtvo().getPoint());
+			atvo.setMaxAttendanceCount(edto.getAtvo().getMaxAttendanceCount());
+			atvo.setSpecialPointCount(edto.getAtvo().getSpecialPointCount());
+			atvo.setSpecialPoint(edto.getAtvo().getSpecialPoint());
+			esv.attendanceModify(atvo);
+		}
+		
 		return "redirect:/event/OneventList";
 	}
 	
@@ -271,6 +295,13 @@ public class EventController {
 		int AttendanceCount=esv.getAttendanceCount(evNo, id);
 		
 		return new ResponseEntity<String>(String.valueOf(AttendanceCount) ,HttpStatus.OK);
+	}
+	@GetMapping(value ="/getAttendance",produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<attendanceVO> getAttendance(@RequestParam("evNo")int evNo)
+	{
+		attendanceVO atvo=esv.getAttendance(evNo);
+		
+		return new ResponseEntity<attendanceVO>(atvo,HttpStatus.OK);
 	}
 
 }

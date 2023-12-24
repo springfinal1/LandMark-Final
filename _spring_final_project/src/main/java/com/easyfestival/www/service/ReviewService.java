@@ -35,6 +35,10 @@ public interface ReviewService {
 
 	int getLikeCount(int rvNo);
 
+	List<reviewVO> mylist(String id, pagingVO pgvo);
+
+	int getMyTotalCount(String id, pagingVO pgvo);
+
 	
 
 }

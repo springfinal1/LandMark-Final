@@ -82,5 +82,15 @@ public class ReviewServiceImpl implements ReviewService{
 		return rdao.getLikeCount(rvNo);
 	}
 
+	@Override
+	public List<reviewVO> mylist(String id, pagingVO pgvo) {
+		return rdao.mylist(id,pgvo);
+	}
+
+	@Override
+	public int getMyTotalCount(String id, pagingVO pgvo) {
+		return rdao.getMyTotalCount(id,pgvo);
+	}
+
 	
 }

@@ -60,4 +60,13 @@
 	<update id="addSpecialPoint">
 		update membership set point=point+#{specialPoint} where id=#{id}
 	</update>
+	<update id="rouletteModify">
+		update roulette set prizes=#{prizes} where ev_no=#{evNo}
+	</update>
+	<update id="attendanceModify">
+		update attendance set max_attendance_count=#{maxAttendanceCount},
+		point=#{point},special_point_count=#{specialPointCount},
+		special_point=#{specialPoint},full_attendance_prize=#{fullAttendancePrize}
+		where ev_no=#{evNo}
+	</update>
 </mapper>

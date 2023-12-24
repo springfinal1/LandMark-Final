@@ -223,5 +223,30 @@ public class ReviewController
 		return cnt>=0 ? new ResponseEntity<String>(String.valueOf(cnt),HttpStatus.OK):new ResponseEntity<String>("-1",HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
+	@GetMapping("/myreview/{id}")
+	public String myreview(@PathVariable("id")String id,pagingVO pgvo,Model m)
+	{
+		List<reviewVO>mylist =rsv.mylist(id,pgvo);
+		for(int i=0;i<mylist.size();i++)
+		{
+			while(mylist.get(i).getContent().contains("<img"))
+			{
+				String text=mylist.get(i).getContent();
+				String substr=text.substring(text.indexOf("<img"), text.indexOf("\">")+2);
+				String result = text.replaceAll(substr,"");
+				log.info("자른 결과:"+result);
+				mylist.get(i).setContent(result);
+				String src=substr.substring(substr.indexOf("\"")+1,substr.indexOf("\">"));
+				mylist.get(i).setThumbnail(src);
+			}
+		}
+		
+		m.addAttribute("list",mylist);
+		int mytotalCount=rsv.getMyTotalCount(id,pgvo);
+		ReviewPagingHandler ph=new ReviewPagingHandler(pgvo, mytotalCount);
+		m.addAttribute("ph", ph);
+		
+		return "/review/ReviewList";
+	}
 
 }

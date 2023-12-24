@@ -133,6 +133,20 @@ public class EventServiceImpl implements EventService
 	}
 
 
+	@Override
+	public void rouletteModify(rouletteVO rlvo) {
+		edao.rouletteModify(rlvo);
+		
+	}
+
+
+	@Override
+	public void attendanceModify(attendanceVO atvo) {
+		edao.attendanceModify(atvo);
+		
+	}
+
+
 
 
 	

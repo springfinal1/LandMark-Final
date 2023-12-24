@@ -2,6 +2,8 @@ package com.easyfestival.www.repository;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.easyfestival.www.domain.ReviewLikeHistoryVO;
 import com.easyfestival.www.domain.pagingVO;
 import com.easyfestival.www.domain.reviewVO;
@@ -33,6 +35,10 @@ public interface ReviewDAO {
 	int getbestTotalCount(pagingVO pgvo);
 
 	int getLikeCount(int rvNo);
+
+	List<reviewVO> mylist(@Param("id") String id,@Param("pgvo") pagingVO pgvo);
+
+	int getMyTotalCount(@Param("id") String id,@Param("pgvo") pagingVO pgvo);
 
 
 
