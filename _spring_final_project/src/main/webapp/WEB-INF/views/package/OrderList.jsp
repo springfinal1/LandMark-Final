@@ -11,7 +11,7 @@
 <meta charset="UTF-8">
 <title>랜드마크</title>
 
-<link rel="stylesheet" href="/resources/css/peyment/myOrder.css"
+<link rel="stylesheet" href="/resources/css/peyment/peyList.css"
 	type="text/css">
 
 <script src="https://code.jquery.com/jquery-2.2.4.js"></script>
@@ -67,11 +67,11 @@ body, h1, h2, h3, h4, h5, h6, p, span {
 								</dl>
 							</div>
 							<div class="item-info-tit">
-								<strong>${ollList.pkContent }</strong>
+								<strong></strong>
 							</div>
 							<div>
 								<a class="prev-aa"
-									href="/peyment/getList?orderNum=${ollList.orderNum}">
+									href="/peyment/getList?orderNum=${ollList.orderNum}&pkNo=${ollList.pkNo}">
 									<button type="button" class="payMentCancel site-btn">
 										<span>상세보기</span>
 									</button>
@@ -107,22 +107,6 @@ body, h1, h2, h3, h4, h5, h6, p, span {
 
 
 
-	</div>
-	<div class="panel-item">
-		<div class="tit">
-			<h2 class="main-item">항공권 예약 내역</h2>
-		</div>
-		<div class="banner-box">
-			<div class="text-head">
-				온라인을 통해 항공권을 예약하신 고객께서는 <img class="aa"
-					src="https://www.kyowontour.com/images/emoji/emoji-airplane-departure02.svg"
-					alt="" style="width: 70px;"> 나의 항공권에서 확인이 가능합니다. <a><button
-						type="button" class="btn-gradient-bottom">
-						<span>나의 항공권</span>
-					</button></a>
-
-			</div>
-		</div>
 	</div>
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 	<script type="text/javascript">

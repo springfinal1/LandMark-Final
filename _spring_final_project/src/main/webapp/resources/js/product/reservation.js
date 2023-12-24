@@ -105,6 +105,9 @@ document.addEventListener('click', (e) => {
 });
 
 
+
+
+
 let closeBtn = document.querySelectorAll('.terms-modal-close'), // 모달창 닫기
     modalBack = document.querySelector('.terms-modal-back'),
     modalOpen1 = document.querySelector('#modal-open-1'),

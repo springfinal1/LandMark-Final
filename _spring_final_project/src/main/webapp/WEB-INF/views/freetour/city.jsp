@@ -166,7 +166,6 @@
                   <div>
                      <c:forEach items="${arrInfo }" var="arrInfo">
                      <input type="hidden" name="gatenumber" value="${arrInfo.gatenumber }" id="arrGate">
-                     <h1>${arrInfo.gatenumber }</h1>
                         <div class="arrInfo-div">
                            <div class="arrInfo-header">
                               <span class="arrInfo-div-span0">${arrInfo.airport } <i class="fa-solid fa-right-long"></i> ${startAirport }</span>

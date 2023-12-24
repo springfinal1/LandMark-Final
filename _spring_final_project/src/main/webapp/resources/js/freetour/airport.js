@@ -41,7 +41,7 @@ reservationBtn.forEach(e=>{
         reserH1.innerHTML=""
         depName.innerHTML = e.closest('div').dataset.airline;
         depTime.innerHTML = `${e.closest('div').dataset.schedule.substring(8,10)}`+" : "+`${e.closest('div').dataset.schedule.substring(10,12)}`;
-        depAir.innerHTML =  `${startAirport.innerHTML} <i class="fa-solid fa-arrow-right"></i> `+ e.closest('div').dataset.airport;
+        depAir.innerHTML =  `${startAirport.innerHTML} <i class="fa-solid fa-right-long"></i> `+ e.closest('div').dataset.airport;
         airlineDep.value = depAirLine;
         flightIdDep.value = depFlight;
         departureDay.value = depDate;
@@ -57,7 +57,7 @@ arrChoice.forEach(e=>{
         reserH1.innerHTML=""
         arrName.innerHTML = e.closest('div').dataset.airline;
         arrTime.innerHTML = `${e.closest('div').dataset.schedule.substring(8,10)}`+" : "+`${e.closest('div').dataset.schedule.substring(10,12)}`;
-        arrAir.innerHTML =  e.closest('div').dataset.airport+" "+` <i class="fa-solid fa-arrow-right"></i> ${startAirport.innerHTML}`;
+        arrAir.innerHTML =  e.closest('div').dataset.airport+" "+` <i class="fa-solid fa-right-long"></i> ${startAirport.innerHTML}`;
         gateNumber.value = arrGate.value;
         airlineArr.value = arrAirLine;
         flightIdArr.value = arrFlight;

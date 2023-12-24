@@ -70,7 +70,7 @@ public class PeymentController {
 
 	@Autowired
 	private MemberShipService memberShipService;
-	
+
 	@Autowired
 	private FreeTitcketOrderService freeTitcketOrderService;
 
@@ -117,7 +117,7 @@ public class PeymentController {
 
 		int totalCount = orderService.OrderCount(svNum); // 총 유저수 가하기
 
-		PagingHandler ph = new PagingHandler(pageNo, 2, 5, totalCount); // 페이지네이션 설정 핸들
+		PagingHandler ph = new PagingHandler(pageNo, 3, 5, totalCount); // 페이지네이션 설정 핸들
 
 		log.info("글수 >>>>>> {}", totalCount);
 		List<OllPayDTO> ollList = orderService.ollOrder(ph, svNum);
@@ -140,8 +140,6 @@ public class PeymentController {
 			@PathVariable(value = "imp_uid") String imp_uid) throws IamportResponseException, IOException {
 		return api.paymentByImpUid(imp_uid);
 	}
-	
-	
 
 	@PostMapping("orderCancle")
 	@ResponseBody
@@ -213,7 +211,7 @@ public class PeymentController {
 			@RequestBody OrderVO orderVO) throws Exception {
 		log.info(" orderDTO >>>> {}", orderVO);
 		String token = payService.getToken();
-		
+
 		log.info(" tocen >>>> {}", token);
 
 		String amount = payService.paymentInfo(orderVO.getImpUid(), token);
@@ -228,11 +226,9 @@ public class PeymentController {
 			payService.payMentCancle(token, orderVO.getImpUid(), amount, "결제 금액 오류");
 			return res;
 		}
-		
-		
-		
+
 		orderService.insert_pay(orderVO);
-		
+
 		return res;
 
 	}
@@ -262,7 +258,12 @@ public class PeymentController {
 	}
 
 	@GetMapping("/getList")
-	public String getOrderGetList(@RequestParam long orderNum, HttpSession session, Model model) {
+	public String getOrderGetList(@RequestParam long orderNum, @RequestParam long pkNo, HttpSession session,
+			Model model) {
+
+		List<ProductListDTO> pldto = productService.getdtoDetail(pkNo);
+
+		model.addAttribute("pldto", pldto.get(0));
 
 		MemberShipVO msVo = memberShipService.getmemberShip(((UserVO) session.getAttribute("uvo")).getId());
 
@@ -284,7 +285,7 @@ public class PeymentController {
 	public ResponseEntity<Long> payInfoPOST(Model model, HttpServletRequest request, HttpServletResponse response,
 			@RequestParam String imp_uid, HttpSession session, @RequestParam long pkNo,
 			@RequestParam String enteredPoints) throws Exception {
-		
+
 		IamportResponse<Payment> result = api.paymentByImpUid(imp_uid);
 		PayDTO payDTO = new PayDTO();
 		long point = 0; // 기본값 설정
@@ -337,6 +338,5 @@ public class PeymentController {
 		// 문자열 형식으로 반환
 		return new ResponseEntity<>(orderStatus, HttpStatus.OK);
 	}
-
 
 }

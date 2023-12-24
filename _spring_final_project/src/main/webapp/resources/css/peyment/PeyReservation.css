@@ -5,16 +5,16 @@ body {
 .main-container {
 	width: 100%;
 	margin-top: 200px;
-	margin-bottom: 50px;
+	margin-bottom: 200px;
 }
 
 .main-top-top {
 	width: 100%;
 	display: flex;
-	justify-content: space-between;
+	justify-content: space-between;	
 	align-items: flex-end;
 	padding-bottom: 20px;
-	border-bottom: 1px solid black;
+
 }
 .main-top-mid {
 	width: 100%;
@@ -78,6 +78,7 @@ col {
 	font-size: 16px;
 	color: rgba(0, 0, 0, 0.6);
 	margin-left: -10px;
+	text-align: center;
 }
 
 .k1-board-type1 tr td .tbl_tit img {
@@ -331,39 +332,31 @@ col {
 }
 
 .bottom-peyment{
-		margin-top: 50px;
+	margin-top: 50px;
 	display: flex;
-	justify-content: space-between;
-	display: flex;
+	flex-direction: column;
+	/* justify-content: center;
+	align-items: center;
+	gap: 30px;  */
 }
-
-
-.selectBox * {
-	box-sizing: border-box;
+.payment-btn{
+	display: flex;
+	justify-content: center;
 }
 
 .selectBox {
+	box-sizing: border-box;
 	position: relative;
 	width: 150px;
-	height: 35px;
+	height: 50px;
 	border-radius: 4px;
-	border: 2px solid #81D8D0;
 	background-size: 20px;
 	cursor: pointer;
+	margin-bottom: 10px;
 }
 
-.selectBox:after {
-	content: '';
-	display: block;
-	width: 2px;
-	height: 100%;
-	position: absolute;
-	top: 0;
-	right: 35px;
-	background: #81D8D0;
-}
-
-.selectBox .label {
+.label {
+	border: none;
 	display: flex;
 	align-items: center;
 	width: inherit;
@@ -371,25 +364,42 @@ col {
 	border: 0 none;
 	outline: 0 none;
 	padding-left: 15px;
-	background: transparent;
+	background: #222;
+	color: #fff;
 	cursor: pointer;
+	border-radius: 9px;
+	transition:1s;
+	font-size: 15px;
+	font-weight: 700;
+}
+.active .label{
+	transition:0s;
+	border-bottom-left-radius:0px;
+	border-top-right-radius:9px;
+	border-bottom-right-radius:0px;
+	border-top-right-radius:9px;
 }
 
 .selectBox .optionList {
 	position: absolute;
-	top: 28px;
+	margin:0;
+	top: 50px;
 	left: 0;
 	width: 100%;
-	background: #81D8D0;
 	color: #fff;
 	list-style-type: none;
 	padding: 0;
-	border-radius: 6px;
 	overflow: hidden;
 	max-height: 0;
 	transition: .3s ease-in;
 }
-
+.selectBox .optionList>li{
+	background: #1c1c1c;
+}
+.selectBox .optionList>li:last-child{
+	border-bottm-left-radius:9px;
+	border-bottm-right-radius:9px;
+}
 .selectBox .optionList::-webkit-scrollbar {
 	width: 6px;
 }
@@ -412,17 +422,22 @@ col {
 }
 
 .selectBox .optionItem {
-	border-bottom: 1px dashed rgb(170, 72, 72);
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+	border-top: 1px solid black;
 	padding: 5px 15px 5px;
 	transition: .1s;
 }
 
 .selectBox .optionItem:hover {
-	background: rgb(175, 93, 93);
+	background: #E53E30;
+	color: white;
 }
 
 .selectBox .optionItem:last-child {
-	border-bottom: 0 none;
+	border-bottom: 1px solid black;
+	border-bottom-left-radius: 9px;
+	border-bottom-right-radius: 9px;
 }
 label {
 	display: block;
@@ -432,11 +447,18 @@ label {
 
 .btn-gradient {
 	position: relative;
-	width: 150px;
-	background: calc(100% - 7px) center no-repeat;
-	padding: 8px 18px;
-	font-size: 14px;
-	border-radius: 10px;
+	width: 200px;
+	height: 60px;
+	background-color: #1c1c1c;
+	color: #fff;
+	border: none;
+	font-size: 20px;
+	font-weight: 700;
+	border-radius: 9px;
+	cursor: pointer;
+}
+.btn-gradient:hover{
+	background-color: #524a4e;
 }
 
 .btn-gradient .optionList::-webkit-scrollbar-track {
@@ -444,4 +466,14 @@ label {
 }
 #air-arrow{
 	font-size: 28px;
+}
+.selectBox{
+	display: flex;
+	justify-content: flex-end;
+}
+#pay-button-arrow{
+	padding-left: 20px;
+}
+.box{
+	padding-bottom: 30px;
 }

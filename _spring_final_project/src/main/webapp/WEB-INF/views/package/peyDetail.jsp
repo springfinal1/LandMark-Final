@@ -20,8 +20,6 @@ body, h1, h2, h3, h4, h5, h6, p, span {
 	font-family: 'Noto Sans KR', sans-serif !important;
 }
 </style>
-
-</head>
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <!-- iamport.payment.js -->
@@ -29,7 +27,7 @@ body, h1, h2, h3, h4, h5, h6, p, span {
 	src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 <title>Home</title>
 </head>
-<link rel="stylesheet" href="/resources/css/peyment/user-number.css">
+<!-- <link rel="stylesheet" href="/resources/css/peyment/user-number.css"> -->
 <body>
 
 
@@ -94,23 +92,37 @@ body, h1, h2, h3, h4, h5, h6, p, span {
 						<h3 class="user-nmuber-top">할인 수단 선택</h3>
 					</div>
 					<div class="product-amout">
-						<span> 사용 포인트 </span> <span id="PointValue">
-							${memShp.point}</span>
+						<span> 사용 가능 포인트 </span> 
+						<div>
+							<span id="PointValue">
+								${memShp.point}</span><span>P</span>
+						</div>
 					</div>
-					<input type="text" id="point-input" placeholder="사용하실 포인트를 적어주세요">
-					<br>
-					<button type="button" class="cupon-button" onclick="applyPoint()">포인트
-						할인</button>
+					<div class="use-point-input">
+						<input type="text" id="point-input" placeholder="사용하실 포인트를 적어주세요">
+						<button type="button" class="cupon-button" onclick="applyPoint()">포인트
+							할인</button>
+					</div>
 
 					<div class="product-amout">
-						<span> 맴버쉽 할인</span> <span id="memberDiscountPrice">
-							${memberDiscountPrice} </span>
+						<span> 맴버쉽 할인</span> 
+						<div>
+							<span id="memberDiscountPrice">
+								${memberDiscountPrice}</span><span>원</span>
+						</div>
 					</div>
 					<div class="product-amout">
-						<span> 포인트 할인</span><span id="endPoint"> - </span>
+						<span> 포인트 할인</span>
+						<div>
+							<span id="endPoint"> - </span>
+							<span>P</span>
+						</div>
 					</div>
 					<div class="product-amout">
-						<span> 최종금액</span><span id="endPrice">${lastTotalCount} </span>
+						<span> 최종금액</span>
+						<div>
+							<span id="endPrice">${lastTotalCount}</span><span>원</span>
+						</div>
 					</div>
 				</div>
 
@@ -118,8 +130,8 @@ body, h1, h2, h3, h4, h5, h6, p, span {
 
 			<div class="box-left">
 				<div class="box">
-					<div class="selectBox">
-						<button class="label">결제수단 선택</button>
+					<div class="select-Box">
+						<button class="label">결제수단 선택 <i class="fa-solid fa-caret-down" id="pay-button-arrow"></i></button>
 						<ul class="optionList" id="paymentMethod">
 							<li class="optionItem" value="kakaopay" data-v-16d1a795>카카오페이</li>
 							<li class="optionItem" value="tosspay">토스</li>
@@ -148,13 +160,13 @@ body, h1, h2, h3, h4, h5, h6, p, span {
 					</div>
 					<div class="banner-box">
 						<div class="text-head">
-							온라인을 통해 항공권을 예약하신 고객께서는 <img class="aa"
+							항공권을 예약하신 고객께서는 <img class="aa"
 								src="https://www.kyowontour.com/images/emoji/emoji-airplane-departure02.svg"
-								alt="" style="width: 70px;"> 나의 항공권에서 확인이 가능합니다.
+								alt="" style="width: 70px;"> 마이페이지에서 확인이 가능합니다.
 						</div>
 						<div>
-							<a><button type="button" class="btn-gradient-bottom">
-									<span>나의 항공권</span>
+							<a href="/user/detail"><button type="button" class="btn-gradient-bottom">
+									<span>마이페이지</span>
 								</button></a>
 						</div>
 

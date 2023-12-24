@@ -105,7 +105,6 @@ public class FreetourHandler {
 			for(int i=0; i<items.size(); i++) { 
 				JSONObject a = (JSONObject)items.get(i);
 				airList.add(gson.fromJson(a.toJSONString(), AirArrInfoVO.class));
-				System.out.println(airList.get(i)+"핸들러에서 찍은거 <<");
 			}			
 			return airList;
 		}else {

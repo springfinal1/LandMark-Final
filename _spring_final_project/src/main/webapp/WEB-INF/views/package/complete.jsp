@@ -47,18 +47,13 @@ body, h1, h2, h3, h4, h5, h6, p, span {
 						<span>${uvo.name }</span>님이 좋아하는 여행 스타일은 어떤걸까요 ?
 					</p>
 				</div>
-				
-				<div class="text-bottom">
-					${uvo.name }님은 <span class="current-icon"> <img
-						src="https://img-kyowontour.kyowontour.com/hp/icon/who.icon2.svg"
-						alt="">
-					</span>${packvo.content}에서 <span class="current-icon"> <img
+
+				<div class="text-bottom"> <span>
+					제가 선택한 여행지는</span> <span class="current-icon">
+					</span><span class="titc">${packvo.pkName}</span>에요. <br>	<span class="current-icon"> </span><img
 						src="https://img-kyowontour.kyowontour.com/hp/icon/where.icon3.svg"
-						alt="">
-					</span> <br> <span class="current-icon"> <img
-						src=" https://cdn-icons-png.flaticon.com/512/2314/2314620.png "
-						width="50" height="50"> 온천을
-					</span>즐기고 싶어요.
+						alt=""> <span class="current-icon"> </span>${packvo.pkContent}
+					즐기고 싶어요.
 				</div>
 			</div>
 			<div class="my-icon">
@@ -83,38 +78,39 @@ body, h1, h2, h3, h4, h5, h6, p, span {
 
 						<div class="item-info">
 							<div class="no">
-								<dl>
+								<dl class="nodt">
 									<dt>예약번호</dt>
 									<dd>${ollList.orderNum }</dd>
 								</dl>
 
-								<dl>
+								<dl class="nodt">
 									<dt>출발일</dt>
 									<dd>${ollList.apDeparture }</dd>
 								</dl>
-								<dl>
+								<dl class="nodt">
 									<dt>도착일</dt>
 									<dd>${ollList.apArrival }</dd>
 								</dl>
-								<dl>
+								<dl class="nodt">
 									<dt>여행권</dt>
 									<dd>${ollList.pkContinent }</dd>
 								</dl>
-								<dl>
+								<dl class="nodt">
 									<dt>여행지</dt>
 									<dd>${ollList.pkName }</dd>
 								</dl>
-									<dl>
+								<dl class="nodt">
 									<dt>호텔</dt>
 									<dd>${ollList.htName }</dd>
 								</dl>
+								<dl class="nodt">
+									<dt>결제금액</dt>
+									<dd>${ollList.totalPrice}원</dd>
+								</dl>
 							</div>
 							<div class="item-info-tit">
-									<Strong>상품소개</Strong>
-									<p>${ollList.pkContent }</p>
-							</div>
-							<div class="item-price">
-								<span><strong>${ollList.totalPrice}원</strong></span>
+								<Strong>상품소개</Strong>
+								<p>${ollList.pkContent }</p>
 							</div>
 							<div class="button-class">
 
@@ -148,17 +144,20 @@ body, h1, h2, h3, h4, h5, h6, p, span {
 				<div class="text-head">
 					온라인을 통해 항공권을 예약하신 고객께서는 <img class="aa"
 						src="https://www.kyowontour.com/images/emoji/emoji-airplane-departure02.svg"
-						alt="" style="width: 70px;"> 나의 항공권에서 확인이 가능합니다.
+						alt="" style="width: 70px;"> 마이페이지에서 확인이 가능합니다.
 				</div>
 				<div>
-					<a><button type="button" class="btn-gradient-bottom">
-							<span>나의 항공권</span>
+					<a href="/user/detail"><button type="button"
+							class="btn-gradient-bottom">
+							<span>마이페이지</span>
 						</button></a>
 				</div>
 
 			</div>
 		</div>
+
 	</div>
+	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 	<script type="text/javascript">
 		let orderNum = `<c:out value="${orderNum}" />`;
 	</script>

@@ -1,6 +1,7 @@
 package com.easyfestival.www.controller;
 
 import java.io.IOException;
+import java.net.URLDecoder;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -130,14 +131,14 @@ public class freeTourPeymentController {
 	@PostMapping("/PeyReservation")
 	public String handleReservation(
 			FreeTitcketOrderVO ftvo,
-			RedirectAttributes redirectAttributes, HttpSession session, Model model) {
+			RedirectAttributes redirectAttributes, HttpSession session, Model model ) {
+		
+		
+		log.info(ftvo+"들어오는 ftvo<<<<<<<<<<<<");
 		
 		
 		
-		
-		
-		
-		System.out.println("freeTitcketOrderVO" + ftvo);
+	
 		model.addAttribute("ftvo",ftvo);
 
 		// 여기에서 폼 데이터를 사용하여 원하는 로직 수행
