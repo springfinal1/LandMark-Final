@@ -192,7 +192,7 @@
 		
 		<div class="user-category">
 			<div>
-				<a href="#">
+				<a href="/review/myreview/${uvo.id}">
 					<span><i class="fa-regular fa-pen-to-square"></i></span>
 					<span>내가쓴리뷰</span>
 				</a>

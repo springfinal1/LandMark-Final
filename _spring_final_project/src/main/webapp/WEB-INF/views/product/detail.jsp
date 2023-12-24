@@ -150,13 +150,14 @@
 					</div>
 					
 					<div class="button-div">
-						<a href="/product/reservation?pkNo=${packvo.pkNo}"><button type="button" class="option-submit-button">예약하기</button></a>
+						<c:set value="peopleCount" var="peopleCnt" />
+						<a href="/product/reservation?pkNo=${packvo.pkNo}&peopleCount=${result}"><button type="button" class="option-submit-button">예약하기</button></a>
 					</div>
 					<div class="admin-product-controll">
 						<!-- 관리자만 보이게 만들기 -->
 						<c:if test="${auths.stream().anyMatch(authVO -> authVO.auth.equals('ROLE_ADMIN')).get()}">
 							<div>
-								<a href="/product/modify?pkNo=${packvo.pkNo }">상품정보 수정하기</a>
+								<a href="/product/modify?pkNo=${packvo.pkNo}">상품정보 수정하기</a>
 							</div>
 							
 							<div>
@@ -247,6 +248,10 @@
 	
 	
 <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
+<script type="text/javascript">
+	let cntPeople = `<c:out value="${result}" />`;
+	console.log(cntPeople);
+</script>
 <script type="text/javascript" src="/resources/js/product/product_detail.js"></script>
 <script type="text/javascript">
 	let country = `<c:out value="${plvo.plCountry}"/>`;

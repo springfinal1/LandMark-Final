@@ -255,16 +255,32 @@ document.addEventListener('click',(e)=>{
 
             document.getElementById('price').value =  (hiddenPrice * pepleval);
             finalPrice.innerHTML = (hiddenPrice * pepleval).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','); 
+            peopleCountToServer(peple.value).then(e => {
+                console.log(e);
 
+            })
         }
     }else if(e.target.id == "plus"){
         peple.value = (pepleval + 1);
         pepleval = pepleval+1;
+
         document.getElementById('price').value =  (hiddenPrice * pepleval);
         finalPrice.innerHTML = (hiddenPrice * pepleval).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','); 
-       
+        peopleCountToServer(peple.value).then(e => {
+                console.log(e);
+            })
+        console.log("인원수변경 >> "+ cntPeople);
     }
 })
 
 
+async function peopleCountToServer(peopleCount){
+    try {
+        let resp = await fetch("/product/peopleVal?peopleCount=" + peopleCount);
+        let result = await resp.JSON();
+        return result;
+    } catch (error) {
+        console.log(error);
+    }
+}
 

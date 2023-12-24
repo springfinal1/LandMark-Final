@@ -49,6 +49,10 @@ public interface EventDAO
 	int getAttendanceCount(@Param("evNo")long evNo,@Param("id") String id);
 
 	void addSpecialPoint(@Param("id")String id,@Param("specialPoint") int specialPoint);
+
+	void rouletteModify(rouletteVO rlvo);
+
+	void attendanceModify(attendanceVO atvo);
 	
 
 
